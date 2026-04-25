@@ -1,13 +1,16 @@
-theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
 title: xronocode
 description: Заметки и дискуссии
 
 color_scheme: light
 
+plugins:
+  - jekyll-remote-theme
+
 nav_enabled: true
 
 defaults:
   - scope:
-      path: "риторика"
+      path: ""
     values:
-      nav_exclude: false
+      layout: default

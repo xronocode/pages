@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Grok
-parent: Риторика и AI
+parent: AI Rhetoric
 nav_order: 2
 ---
 

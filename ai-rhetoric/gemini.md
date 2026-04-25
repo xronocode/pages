@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Gemini
-parent: Риторика и AI
+parent: AI Rhetoric
 nav_order: 4
 ---
 
