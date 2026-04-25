@@ -6,7 +6,4 @@ nav_order: 1
 
 # xronocode
 
-Заметки и дискуссии.
-
-- [AI Rhetoric — дискуссия](ai-rhetoric/)
-- [Статьи](статьи/)
+CPO in fintech. Shipping AI into banking and ecosystems.
