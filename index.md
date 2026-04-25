@@ -1,10 +1,9 @@
 ---
-title: xronocode
-layout: default
+layout: home
+title: Главная
+nav_order: 1
 ---
 
 # xronocode
 
-## Дискуссии
-
-- [Риторика и AI — дискуссия](риторика/)
+Заметки и дискуссии.

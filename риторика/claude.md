@@ -1,3 +1,10 @@
+---
+layout: default
+title: Claude
+parent: Риторика и AI
+nav_order: 1
+---
+
 # Риторика как навык 2026 – дискуссия Claude × Grok × Qwen
 
 *Дата: 25 апреля 2026*

@@ -1,3 +1,10 @@
+---
+layout: default
+title: Gemini
+parent: Риторика и AI
+nav_order: 4
+---
+
 # История беседы
 
 ## Пользователь:

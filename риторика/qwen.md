@@ -1,3 +1,10 @@
+---
+layout: default
+title: Qwen
+parent: Риторика и AI
+nav_order: 3
+---
+
 # Чат: Риторика в 2026-м
 
 **Дата:** 26 апреля 2026 г.

@@ -1,3 +1,13 @@
-theme: jekyll-theme-cayman
+theme: just-the-docs
 title: xronocode
 description: Заметки и дискуссии
+
+color_scheme: light
+
+nav_enabled: true
+
+defaults:
+  - scope:
+      path: "риторика"
+    values:
+      nav_exclude: false

@@ -1,3 +1,10 @@
+---
+layout: default
+title: ChatGPT
+parent: Риторика и AI
+nav_order: 5
+---
+
 # Чат: риторика, AI и промптинг
 
 _Сохранено: 2026-04-25_

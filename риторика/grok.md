@@ -1,3 +1,10 @@
+---
+layout: default
+title: Grok
+parent: Риторика и AI
+nav_order: 2
+---
+
 # Дискуссия о риторике в 2026 году
 
 **Ты (Mikhail):**  
