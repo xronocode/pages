@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Главная
+title: Home
 nav_order: 1
 ---
 

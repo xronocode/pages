@@ -3,6 +3,7 @@ title: xronocode
 description: Заметки и дискуссии
 
 color_scheme: light
+search_enabled: true
 
 plugins:
   - jekyll-remote-theme
@@ -12,5 +13,10 @@ nav_enabled: true
 defaults:
   - scope:
       path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: pages
     values:
       layout: default
