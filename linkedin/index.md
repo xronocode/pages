@@ -1,7 +1,8 @@
 ---
 layout: default
 title: LinkedIn
-nav_order: 5
+parent: Blog
+nav_order: 10
 has_children: true
 ---
 
