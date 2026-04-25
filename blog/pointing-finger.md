@@ -3,8 +3,7 @@ layout: default
 title: "Как показать модели пальцем, что важно"
 parent: Blog
 nav_order: 5
-grand_parent: Home
-has_children: false
+
 ---
 
 # Как показать модели пальцем, что важно

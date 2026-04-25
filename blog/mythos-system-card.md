@@ -3,8 +3,7 @@ layout: default
 title: "Anthropic выпустила System Card Claude Mythos: что важного осталось за кадром"
 parent: Blog
 nav_order: 6
-grand_parent: Home
-has_children: false
+
 ---
 
 # Anthropic выпустила System Card Claude Mythos: что важного осталось за кадром

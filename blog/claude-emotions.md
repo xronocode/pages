@@ -3,8 +3,7 @@ layout: default
 title: "171 эмоция, психиатр и прямая связь с reward hacking — пробуем заглянуть внутрь Claude"
 parent: Blog
 nav_order: 3
-grand_parent: Home
-has_children: false
+
 ---
 
 # 171 эмоция, психиатр и прямая связь с reward hacking — пробуем заглянуть внутрь Claude

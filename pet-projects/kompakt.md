@@ -38,6 +38,7 @@ pdf-kompakt input.pdf -q low -o out.pdf   # maximum compression
 
 ## Links
 
+- [Website](https://kompakt.xronocode.com)
 - [GitHub](https://github.com/xronocode/kompakt)
 - [Chrome Extension](https://chromewebstore.google.com/detail/kompakt-pdf-compressor/bnpljfghpddmocfclmfbemcidggddijg)
 - [Web Compress](https://kompakt.pages.dev)

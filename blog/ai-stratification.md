@@ -3,8 +3,7 @@ layout: default
 title: "AI-расслоение: почему с генеративным ИИ всё пошло не так, как со смартфонами"
 parent: Blog
 nav_order: 2
-grand_parent: Home
-has_children: false
+
 ---
 
 # AI-расслоение: почему с генеративным ИИ всё пошло не так, как со смартфонами

@@ -3,8 +3,7 @@ layout: default
 title: "Ваш AI не умеет редактировать большие документы. Вот почему – и как это починить"
 parent: Blog
 nav_order: 7
-grand_parent: Home
-has_children: false
+
 ---
 
 # Ваш AI не умеет редактировать большие документы. Вот почему – и как это починить

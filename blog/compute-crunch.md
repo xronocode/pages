@@ -3,8 +3,7 @@ layout: default
 title: "Compute crunch пришёл: как считать экономику LLM в 2026"
 parent: Blog
 nav_order: 4
-grand_parent: Home
-has_children: false
+
 ---
 
 # Compute crunch пришёл: как считать экономику LLM в 2026
