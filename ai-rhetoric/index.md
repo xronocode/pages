@@ -1,7 +1,8 @@
 ---
 layout: default
 title: AI Rhetoric
-nav_order: 2
+parent: "Чем умнее становятся модели, тем больше ценится способность ясно мыслить и точно формулировать намерение"
+nav_order: 1
 has_children: true
 ---
 
