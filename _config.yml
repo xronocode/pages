@@ -5,6 +5,7 @@ description: Заметки и дискуссии
 color_scheme: light
 search_enabled: true
 footer_content: ""
+favicon_ico: "/favicon.ico"
 
 plugins:
   - jekyll-remote-theme
