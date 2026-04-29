@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Pet Projects
-nav_order: 4
+nav_order: 5
 has_children: true
 ---
 
