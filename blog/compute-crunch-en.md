@@ -2,7 +2,7 @@
 layout: default
 title: "Compute Crunch"
 parent: Blog
-nav_exclude: true
+nav_order: 4
 ---
 
 # Compute Crunch Is Here: How to Calculate LLM Economics in 2026

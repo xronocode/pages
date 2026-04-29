@@ -2,7 +2,7 @@
 layout: default
 title: "AI Stratification"
 parent: Blog
-nav_exclude: true
+nav_order: 2
 ---
 
 # AI Stratification: Why Generative AI Did Not Spread Like Smartphones

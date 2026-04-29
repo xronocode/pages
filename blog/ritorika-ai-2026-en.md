@@ -2,7 +2,7 @@
 layout: default
 title: "Rhetoric and AI"
 parent: Blog
-nav_exclude: true
+nav_order: 1
 ---
 
 # The Smarter Models Get, the More Valuable Clear Thinking Becomes

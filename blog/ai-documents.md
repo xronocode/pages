@@ -2,7 +2,7 @@
 layout: default
 title: "GRACE-DOCX"
 parent: Blog
-nav_order: 7
+nav_exclude: true
 
 ---
 

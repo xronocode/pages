@@ -2,7 +2,7 @@
 layout: default
 title: "Claude Emotions"
 parent: Blog
-nav_exclude: true
+nav_order: 3
 ---
 
 # 171 Emotions, a Psychiatrist, and a Direct Link to Reward Hacking: Looking Inside Claude

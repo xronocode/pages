@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "Pointing the Model at What Matters"
+title: "Pointing the Model"
 parent: Blog
-nav_exclude: true
+nav_order: 5
 ---
 
 # Pointing the Model at What Matters

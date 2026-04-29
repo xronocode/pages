@@ -2,7 +2,7 @@
 layout: default
 title: "Pointing the model"
 parent: Blog
-nav_order: 5
+nav_exclude: true
 
 ---
 

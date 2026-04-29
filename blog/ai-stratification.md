@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "AI-расслоение"
+title: "AI Stratification"
 parent: Blog
-nav_order: 2
+nav_exclude: true
 
 ---
 

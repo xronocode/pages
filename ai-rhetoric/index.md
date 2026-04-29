@@ -1,8 +1,8 @@
 ---
 layout: default
 title: AI Rhetoric
-parent: "Риторика и AI"
-nav_order: 1
+parent: "Rhetoric and AI"
+nav_exclude: true
 has_children: true
 ---
 

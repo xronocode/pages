@@ -2,7 +2,7 @@
 layout: default
 title: "Claude emotions"
 parent: Blog
-nav_order: 3
+nav_exclude: true
 
 ---
 

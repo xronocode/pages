@@ -2,7 +2,8 @@
 layout: default
 title: Gemini
 parent: AI Rhetoric
-grand_parent: "Риторика и AI"
+grand_parent: "Rhetoric and AI"
+nav_exclude: true
 nav_order: 4
 ---
 

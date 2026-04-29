@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "Anthropic's Claude Mythos System Card: What Everyone Missed Beyond the Hacking Headlines"
-parent: LinkedIn
-nav_order: 1
+title: "Claude Mythos"
+parent: Blog
+nav_order: 6
 ---
 
 # Anthropic's Claude Mythos System Card: What Everyone Missed Beyond the Hacking Headlines

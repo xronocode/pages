@@ -1,9 +1,8 @@
 ---
 layout: default
-title: "Риторика и AI"
+title: "Rhetoric and AI"
 parent: Blog
-nav_order: 1
-has_children: true
+nav_exclude: true
 ---
 
 # Чем умнее становятся модели, тем больше ценится способность ясно мыслить и точно формулировать намерение

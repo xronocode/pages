@@ -1,8 +1,8 @@
 ---
 layout: default
-title: "GRACE-DOCX: Editing Long Documents with AI"
+title: "GRACE-DOCX"
 parent: Blog
-nav_exclude: true
+nav_order: 7
 ---
 
 # Your AI Cannot Edit Long Documents. Here Is Why - and How to Fix It

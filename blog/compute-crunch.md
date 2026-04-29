@@ -2,7 +2,7 @@
 layout: default
 title: "Compute crunch"
 parent: Blog
-nav_order: 4
+nav_exclude: true
 
 ---
 

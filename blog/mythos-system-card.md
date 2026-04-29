@@ -2,7 +2,7 @@
 layout: default
 title: "Claude Mythos"
 parent: Blog
-nav_order: 6
+nav_exclude: true
 
 ---
 
