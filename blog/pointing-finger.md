@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Как показать модели пальцем, что важно"
+nav_title: "Pointing the model"
 parent: Blog
 nav_order: 5
 
@@ -8,7 +9,13 @@ nav_order: 5
 
 # Как показать модели пальцем, что важно
 
-*13 апреля 2026 • [Оригинал на Хабре](https://habr.com/ru/articles/1022862/)*
+<div class="article-actions">
+  <a href="pointing-finger.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1022862/">Habr original</a>
+  <span>EN planned</span>
+</div>
+
+*13 апреля 2026*
 
 Вы наверняка замечали: один и тот же вопрос в ChatGPT или Claude иногда даёт отличный ответ, иногда -- качество ответа не соответствует ожиданиям. Многие списывают это на «непредсказуемость AI». На самом деле у этого есть и структурная причина.
 

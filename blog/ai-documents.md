@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Ваш AI не умеет редактировать большие документы. Вот почему – и как это починить"
+nav_title: "GRACE-DOCX"
 parent: Blog
 nav_order: 7
 
@@ -8,7 +9,13 @@ nav_order: 7
 
 # Ваш AI не умеет редактировать большие документы. Вот почему – и как это починить
 
-*7 апреля 2026 • [Оригинал на Хабре](https://habr.com/ru/articles/1020548/)*
+<div class="article-actions">
+  <a href="ai-documents.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1020548/">Habr original</a>
+  <span>EN planned</span>
+</div>
+
+*7 апреля 2026*
 
 Вы открываете чат. Загружаете договор на 80 страниц или корпоративный регламент на 200. Пишете: *«Добавь в раздел 4.2 новый пункт про порядок согласования»*.
 

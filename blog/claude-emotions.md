@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "171 эмоция, психиатр и прямая связь с reward hacking — пробуем заглянуть внутрь Claude"
+nav_title: "Claude emotions"
 parent: Blog
 nav_order: 3
 
@@ -8,7 +9,13 @@ nav_order: 3
 
 # 171 эмоция, психиатр и прямая связь с reward hacking — пробуем заглянуть внутрь Claude
 
-*21 апреля 2026 • [Оригинал на Хабре](https://habr.com/ru/articles/1026278/)*
+<div class="article-actions">
+  <a href="claude-emotions.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1026278/">Habr original</a>
+  <span>EN planned</span>
+</div>
+
+*21 апреля 2026*
 
 *Это вторая статья из серии разборов документов Anthropic. Первая -- про System Card Claude Mythos Preview --* [*здесь*](https://habr.com/ru/articles/1022126/)*. Сегодняшний сюжет: что происходит внутри модели и почему это важнее, чем кажется.*
 

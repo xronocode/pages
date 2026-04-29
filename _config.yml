@@ -4,6 +4,7 @@ description: Заметки и дискуссии
 
 color_scheme: light
 search_enabled: true
+footer_content: ""
 
 plugins:
   - jekyll-remote-theme

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Чем умнее становятся модели, тем больше ценится способность ясно мыслить и точно формулировать намерение"
+nav_title: "Риторика и AI"
 parent: Blog
 nav_order: 1
 has_children: true
@@ -8,7 +9,13 @@ has_children: true
 
 # Чем умнее становятся модели, тем больше ценится способность ясно мыслить и точно формулировать намерение
 
-*25 апреля 2026 • [Оригинал на Хабре](https://habr.com/ru/articles/1027954/)*
+<div class="article-actions">
+  <a href="ritorika-ai-2026.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1027954/">Habr original</a>
+  <span>EN planned</span>
+</div>
+
+*25 апреля 2026*
 
 К такому выводу я пришел совместно с Сlaude, Grok, Qwen и ChatGPT, но рассказываю по порядку\...
 

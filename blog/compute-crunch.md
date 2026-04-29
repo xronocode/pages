@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Compute crunch пришёл: как считать экономику LLM в 2026"
+nav_title: "Compute crunch"
 parent: Blog
 nav_order: 4
 
@@ -8,7 +9,13 @@ nav_order: 4
 
 # Compute crunch пришёл: как считать экономику LLM в 2026
 
-*17 апреля 2026 • [Оригинал на Хабре](https://habr.com/ru/articles/1024850/)*
+<div class="article-actions">
+  <a href="compute-crunch.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1024850/">Habr original</a>
+  <span>EN planned</span>
+</div>
+
+*17 апреля 2026*
 
 > *Build, Buy или Hybrid - рассуждаем о подходах к TCO. Статья - приглашение к диалогу и обсуждению, не экспертный нарратив.*
 

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Anthropic выпустила System Card Claude Mythos: что важного осталось за кадром"
+nav_title: "Claude Mythos"
 parent: Blog
 nav_order: 6
 
@@ -8,7 +9,13 @@ nav_order: 6
 
 # Anthropic выпустила System Card Claude Mythos: что важного осталось за кадром
 
-*11 апреля 2026 • [Оригинал на Хабре](https://habr.com/ru/articles/1022126/)*
+<div class="article-actions">
+  <a href="mythos-system-card.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1022126/">Habr original</a>
+  <a href="/linkedin/mythos-system-card-en.html">EN translation</a>
+</div>
+
+*11 апреля 2026*
 
 *Хабр уже написал про OpenBSD, нулевые дни и побег из песочницы. Это примерно 15% от реального содержания документа. Читаю остальное -- с точки зрения того, кто строит AI-продукты в продакшне.*
 
