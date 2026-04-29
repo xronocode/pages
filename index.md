@@ -18,39 +18,39 @@ CPO in fintech. Shipping AI into banking, ecosystems, documents, and autonomous 
 
 <div class="article-grid">
   <article class="article-card">
-    <div class="article-meta">25 апреля 2026 · AI · thinking</div>
-    <h3><a href="/blog/ritorika-ai-2026.html">Чем умнее становятся модели, тем больше ценится способность ясно мыслить</a></h3>
-    <p>Про риторику, намерение и навык формулировать задачи в эпоху сильных моделей.</p>
+    <div class="article-meta">April 25, 2026 · AI · thinking</div>
+    <h3><a href="/blog/ritorika-ai-2026-en.html">The Smarter Models Get, the More Valuable Clear Thinking Becomes</a></h3>
+    <p>On rhetoric, intent, and the skill of formulating tasks in the age of stronger models.</p>
     <div class="article-actions">
+      <a href="/blog/ritorika-ai-2026-en.html">Read EN</a>
       <a href="/blog/ritorika-ai-2026.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1027954/">Habr</a>
-      <a href="/blog/ritorika-ai-2026-en.html">EN translation</a>
     </div>
   </article>
 
   <article class="article-card">
-    <div class="article-meta">24 апреля 2026 · AI adoption</div>
-    <h3><a href="/blog/ai-stratification.html">AI-расслоение: почему с генеративным ИИ все пошло не так, как со смартфонами</a></h3>
-    <p>Почему генеративный AI осваивается не так, как предыдущие массовые технологии.</p>
+    <div class="article-meta">April 24, 2026 · AI adoption</div>
+    <h3><a href="/blog/ai-stratification-en.html">AI Stratification: Why Generative AI Did Not Spread Like Smartphones</a></h3>
+    <p>Why generative AI is adopted differently from previous mass technologies.</p>
     <div class="article-actions">
+      <a href="/blog/ai-stratification-en.html">Read EN</a>
       <a href="/blog/ai-stratification.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1027738/">Habr</a>
-      <a href="/blog/ai-stratification-en.html">EN translation</a>
     </div>
   </article>
 
   <article class="article-card">
-    <div class="article-meta">7 апреля 2026 · agents · documents</div>
-    <h3><a href="/blog/ai-documents.html">Ваш AI не умеет редактировать большие документы</a></h3>
-    <p>GRACE-DOCX: карта документа, правила редактирования и верификация внутри Word-файла.</p>
+    <div class="article-meta">April 7, 2026 · agents · documents</div>
+    <h3><a href="/blog/ai-documents-en.html">Your AI Cannot Edit Long Documents. Here Is Why</a></h3>
+    <p>GRACE-DOCX: document maps, editing rules, and verification embedded into a Word file.</p>
     <div class="article-actions">
+      <a href="/blog/ai-documents-en.html">Read EN</a>
       <a href="/blog/ai-documents.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1020548/">Habr</a>
-      <a href="/blog/ai-documents-en.html">EN translation</a>
     </div>
   </article>
 </div>
 
 ## How Articles Are Organized
 
-Each article page is treated as a small hub: Russian mirror, original Habr post, and English translation sit next to each other. That keeps the site useful both as an archive and as a bilingual portfolio.
+English is the primary reading layer. Each article also keeps the Russian mirror and the original Habr post next to it, so the site works both as an archive and as a bilingual portfolio.
