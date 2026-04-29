@@ -11,7 +11,7 @@ nav_order: 4
 <div class="article-actions">
   <a href="compute-crunch.html">RU mirror</a>
   <a href="https://habr.com/ru/articles/1024850/">Habr original</a>
-  <span>EN planned</span>
+  <a href="compute-crunch-en.html">EN translation</a>
 </div>
 
 *17 апреля 2026*

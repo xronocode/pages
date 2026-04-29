@@ -24,7 +24,7 @@ CPO in fintech. Shipping AI into banking, ecosystems, documents, and autonomous 
     <div class="article-actions">
       <a href="/blog/ritorika-ai-2026.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1027954/">Habr</a>
-      <span>EN planned</span>
+      <a href="/blog/ritorika-ai-2026-en.html">EN translation</a>
     </div>
   </article>
 
@@ -35,7 +35,7 @@ CPO in fintech. Shipping AI into banking, ecosystems, documents, and autonomous 
     <div class="article-actions">
       <a href="/blog/ai-stratification.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1027738/">Habr</a>
-      <span>EN planned</span>
+      <a href="/blog/ai-stratification-en.html">EN translation</a>
     </div>
   </article>
 
@@ -46,7 +46,7 @@ CPO in fintech. Shipping AI into banking, ecosystems, documents, and autonomous 
     <div class="article-actions">
       <a href="/blog/ai-documents.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1020548/">Habr</a>
-      <span>EN planned</span>
+      <a href="/blog/ai-documents-en.html">EN translation</a>
     </div>
   </article>
 </div>

@@ -19,7 +19,7 @@ permalink: /blog/
     <div class="article-actions">
       <a href="ritorika-ai-2026.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1027954/">Habr original</a>
-      <span>EN planned</span>
+      <a href="ritorika-ai-2026-en.html">EN translation</a>
     </div>
   </article>
 
@@ -30,7 +30,7 @@ permalink: /blog/
     <div class="article-actions">
       <a href="ai-stratification.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1027738/">Habr original</a>
-      <span>EN planned</span>
+      <a href="ai-stratification-en.html">EN translation</a>
     </div>
   </article>
 
@@ -41,7 +41,7 @@ permalink: /blog/
     <div class="article-actions">
       <a href="claude-emotions.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1026278/">Habr original</a>
-      <span>EN planned</span>
+      <a href="claude-emotions-en.html">EN translation</a>
     </div>
   </article>
 
@@ -52,7 +52,7 @@ permalink: /blog/
     <div class="article-actions">
       <a href="compute-crunch.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1024850/">Habr original</a>
-      <span>EN planned</span>
+      <a href="compute-crunch-en.html">EN translation</a>
     </div>
   </article>
 
@@ -63,7 +63,7 @@ permalink: /blog/
     <div class="article-actions">
       <a href="pointing-finger.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1022862/">Habr original</a>
-      <span>EN planned</span>
+      <a href="pointing-finger-en.html">EN translation</a>
     </div>
   </article>
 
@@ -85,7 +85,7 @@ permalink: /blog/
     <div class="article-actions">
       <a href="ai-documents.html">RU mirror</a>
       <a href="https://habr.com/ru/articles/1020548/">Habr original</a>
-      <span>EN planned</span>
+      <a href="ai-documents-en.html">EN translation</a>
     </div>
   </article>
 </section>

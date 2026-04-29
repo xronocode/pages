@@ -11,7 +11,7 @@ nav_order: 5
 <div class="article-actions">
   <a href="pointing-finger.html">RU mirror</a>
   <a href="https://habr.com/ru/articles/1022862/">Habr original</a>
-  <span>EN planned</span>
+  <a href="pointing-finger-en.html">EN translation</a>
 </div>
 
 *13 апреля 2026*

@@ -11,7 +11,7 @@ nav_order: 2
 <div class="article-actions">
   <a href="ai-stratification.html">RU mirror</a>
   <a href="https://habr.com/ru/articles/1027738/">Habr original</a>
-  <span>EN planned</span>
+  <a href="ai-stratification-en.html">EN translation</a>
 </div>
 
 *24 апреля 2026*

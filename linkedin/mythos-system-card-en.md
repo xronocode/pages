@@ -7,6 +7,12 @@ nav_order: 1
 
 # Anthropic's Claude Mythos System Card: What Everyone Missed Beyond the Hacking Headlines
 
+<div class="article-actions">
+  <a href="/blog/mythos-system-card.html">RU mirror</a>
+  <a href="https://habr.com/ru/articles/1022126/">Habr original</a>
+  <a href="/linkedin/mythos-system-card-en.html">EN translation</a>
+</div>
+
 *Published April 11, 2026 · [Original on LinkedIn](https://www.linkedin.com/pulse/anthropics-claude-mythos-system-card-what-everyone-missed-evdokimov-koocf)*
 
 Everyone covered the zero-days and the sandbox escape. That's about 15% of the document. Here's what matters in the other 85% — from someone building AI products in production.

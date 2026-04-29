@@ -11,7 +11,7 @@ nav_order: 3
 <div class="article-actions">
   <a href="claude-emotions.html">RU mirror</a>
   <a href="https://habr.com/ru/articles/1026278/">Habr original</a>
-  <span>EN planned</span>
+  <a href="claude-emotions-en.html">EN translation</a>
 </div>
 
 *21 апреля 2026*

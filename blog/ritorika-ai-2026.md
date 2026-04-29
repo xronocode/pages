@@ -11,7 +11,7 @@ has_children: true
 <div class="article-actions">
   <a href="ritorika-ai-2026.html">RU mirror</a>
   <a href="https://habr.com/ru/articles/1027954/">Habr original</a>
-  <span>EN planned</span>
+  <a href="ritorika-ai-2026-en.html">EN translation</a>
 </div>
 
 *25 апреля 2026*
