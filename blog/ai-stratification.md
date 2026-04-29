@@ -1,7 +1,6 @@
 ---
 layout: default
-title: "AI-расслоение: почему с генеративным ИИ всё пошло не так, как со смартфонами"
-nav_title: "AI-расслоение"
+title: "AI-расслоение"
 parent: Blog
 nav_order: 2
 

@@ -1,7 +1,6 @@
 ---
 layout: default
-title: "171 эмоция, психиатр и прямая связь с reward hacking — пробуем заглянуть внутрь Claude"
-nav_title: "Claude emotions"
+title: "Claude emotions"
 parent: Blog
 nav_order: 3
 

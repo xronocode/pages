@@ -1,7 +1,6 @@
 ---
 layout: default
-title: "Compute crunch пришёл: как считать экономику LLM в 2026"
-nav_title: "Compute crunch"
+title: "Compute crunch"
 parent: Blog
 nav_order: 4
 

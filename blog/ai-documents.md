@@ -1,7 +1,6 @@
 ---
 layout: default
-title: "Ваш AI не умеет редактировать большие документы. Вот почему – и как это починить"
-nav_title: "GRACE-DOCX"
+title: "GRACE-DOCX"
 parent: Blog
 nav_order: 7
 

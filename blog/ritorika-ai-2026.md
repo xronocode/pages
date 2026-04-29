@@ -1,7 +1,6 @@
 ---
 layout: default
-title: "Чем умнее становятся модели, тем больше ценится способность ясно мыслить и точно формулировать намерение"
-nav_title: "Риторика и AI"
+title: "Риторика и AI"
 parent: Blog
 nav_order: 1
 has_children: true

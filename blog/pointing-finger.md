@@ -1,7 +1,6 @@
 ---
 layout: default
-title: "Как показать модели пальцем, что важно"
-nav_title: "Pointing the model"
+title: "Pointing the model"
 parent: Blog
 nav_order: 5
 

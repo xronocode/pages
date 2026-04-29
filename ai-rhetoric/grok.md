@@ -2,7 +2,7 @@
 layout: default
 title: Grok
 parent: AI Rhetoric
-grand_parent: "Чем умнее становятся модели, тем больше ценится способность ясно мыслить и точно формулировать намерение"
+grand_parent: "Риторика и AI"
 nav_order: 2
 ---
 
