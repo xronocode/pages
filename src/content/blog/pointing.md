@@ -19,7 +19,7 @@ But it contains a few insights that are useful for everyone.
 
 A transformer, the architecture behind modern language models, processes text through attention. Simplified: every token "looks" at other tokens and estimates how important each of them is for understanding the current one.
 
-![Full attention vs sparse attention](https://habrastorage.org/r/w1560/getpro/habr/upload_files/075/a77/882/075a7788271f5e65b148ef9e3b528cf5.png)
+![Full attention vs sparse attention](/img/full-vs-sparse-attention.svg)
 
 *Full attention vs sparse attention*
 
@@ -59,7 +59,7 @@ Take two prompts with identical content.
 
 The content is identical. But in the second case, opening and closing tags create paired anchors. Tokens inside `<data>` receive high weight relative to each other and lower weight relative to `<instructions>`. The model no longer has to guess where things are. We are literally pointing at what matters relative to what.
 
-![Full attention: nested anchors](https://habrastorage.org/r/w1560/getpro/habr/upload_files/d70/cd3/e6a/d70cd3e6ac140553381168faa3a88b4b.png)
+![Full attention: nested anchors](/img/nested-anchors.svg)
 
 *Full attention: nested anchors*
 
@@ -80,7 +80,7 @@ This means a token at the beginning of a long prompt may have no direct connecti
 
 XML tags act as structural beacons. The opening and closing tag create a local cluster with high mutual attention inside the block. The model does not have to reach across the whole context; the boundary is visible locally.
 
-![Full attention vs sparse attention](https://habrastorage.org/r/w1560/getpro/habr/upload_files/075/a77/882/075a7788271f5e65b148ef9e3b528cf5.png)
+![Full attention vs sparse attention](/img/full-vs-sparse-attention.svg)
 
 *Full attention vs sparse attention*
 

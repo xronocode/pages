@@ -1,0 +1,81 @@
+<svg viewBox="0 0 720 310" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, sans-serif">
+  <rect width="720" height="310" fill="#fff" rx="6"/>
+
+  <!-- Title -->
+  <text x="360" y="32" text-anchor="middle" font-size="16" font-weight="600" fill="#333">Full attention: nested anchors</text>
+  <text x="360" y="52" text-anchor="middle" font-size="12" fill="#888">paired tags create a weight hierarchy</text>
+
+  <!-- Token row: y=200 center -->
+  <!-- text -->
+  <rect x="22" y="186" width="44" height="28" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="44" y="204" text-anchor="middle" font-size="11" fill="#666">text</text>
+
+  <!-- <role> (red) -->
+  <rect x="78" y="186" width="52" height="28" rx="4" fill="#fee2e2" stroke="#f87171" stroke-width="1.5"/>
+  <text x="104" y="204" text-anchor="middle" font-size="10" font-weight="500" fill="#dc2626">&lt;role&gt;</text>
+
+  <!-- text -->
+  <rect x="142" y="186" width="44" height="28" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="164" y="204" text-anchor="middle" font-size="11" fill="#666">text</text>
+
+  <!-- </role> (red) -->
+  <rect x="198" y="186" width="56" height="28" rx="4" fill="#fee2e2" stroke="#f87171" stroke-width="1.5"/>
+  <text x="226" y="204" text-anchor="middle" font-size="10" font-weight="500" fill="#dc2626">&lt;/role&gt;</text>
+
+  <!-- <ctx> (green) -->
+  <rect x="266" y="186" width="46" height="28" rx="4" fill="#dcfce7" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="289" y="204" text-anchor="middle" font-size="10" font-weight="500" fill="#16a34a">&lt;ctx&gt;</text>
+
+  <!-- text -->
+  <rect x="324" y="186" width="44" height="28" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="346" y="204" text-anchor="middle" font-size="11" fill="#666">text</text>
+
+  <!-- <instr> (blue) -->
+  <rect x="380" y="186" width="52" height="28" rx="4" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="406" y="204" text-anchor="middle" font-size="10" font-weight="500" fill="#2563eb">&lt;instr&gt;</text>
+
+  <!-- text -->
+  <rect x="444" y="186" width="44" height="28" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="466" y="204" text-anchor="middle" font-size="11" fill="#666">text</text>
+
+  <!-- </instr> (blue) -->
+  <rect x="500" y="186" width="56" height="28" rx="4" fill="#dbeafe" stroke="#60a5fa" stroke-width="1.5"/>
+  <text x="528" y="204" text-anchor="middle" font-size="10" font-weight="500" fill="#2563eb">&lt;/instr&gt;</text>
+
+  <!-- </ctx> (green) -->
+  <rect x="568" y="186" width="52" height="28" rx="4" fill="#dcfce7" stroke="#4ade80" stroke-width="1.5"/>
+  <text x="594" y="204" text-anchor="middle" font-size="10" font-weight="500" fill="#16a34a">&lt;/ctx&gt;</text>
+
+  <!-- text -->
+  <rect x="632" y="186" width="44" height="28" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="654" y="204" text-anchor="middle" font-size="11" fill="#666">text</text>
+
+  <!-- Arcs -->
+  <!-- Independent pair: <role>...</role> (red arc) -->
+  <path d="M104,186 C104,148 226,148 226,186" fill="none" stroke="#f87171" stroke-width="2" opacity="0.8"/>
+  <circle cx="165" cy="153" r="3" fill="#f87171"/>
+
+  <!-- Outer pair: <ctx>...</ctx> (green arc) — tallest -->
+  <path d="M289,186 C289,88 594,88 594,186" fill="none" stroke="#4ade80" stroke-width="2" opacity="0.8"/>
+  <circle cx="441" cy="90" r="3" fill="#4ade80"/>
+
+  <!-- Nested pair: <instr>...</instr> (blue arc) -->
+  <path d="M406,186 C406,130 528,130 528,186" fill="none" stroke="#60a5fa" stroke-width="2" opacity="0.8"/>
+  <circle cx="467" cy="138" r="3" fill="#60a5fa"/>
+
+  <!-- "inside <ctx>" label -->
+  <text x="441" y="78" text-anchor="middle" font-size="10" fill="#16a34a" font-style="italic">inside &lt;ctx&gt;</text>
+
+  <!-- Legend -->
+  <line x1="120" y1="268" x2="145" y2="268" stroke="#f87171" stroke-width="2"/>
+  <circle cx="132" cy="268" r="3" fill="#f87171"/>
+  <text x="152" y="272" font-size="11" fill="#555">independent pair</text>
+
+  <line x1="290" y1="268" x2="315" y2="268" stroke="#4ade80" stroke-width="2"/>
+  <circle cx="302" cy="268" r="3" fill="#4ade80"/>
+  <text x="322" y="272" font-size="11" fill="#555">outer pair</text>
+
+  <line x1="430" y1="268" x2="455" y2="268" stroke="#60a5fa" stroke-width="2"/>
+  <circle cx="442" cy="268" r="3" fill="#60a5fa"/>
+  <text x="462" y="272" font-size="11" fill="#555">nested pair</text>
+</svg>
