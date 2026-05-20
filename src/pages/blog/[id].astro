@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({ params: { id: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+---
+
+<Base title={post.data.title} currentNav="blog">
+  <div class="page-fade">
+    <div class="article-shell">
+      <a class="back" href="/blog/">← all essays</a>
+
+      <div class="a-meta">
+        <span>{fmt(post.data.date)}</span>
+        <span>·</span>
+        <span style="color: var(--accent);">{post.data.tags.join(' · ')}</span>
+        <span>·</span>
+        <span>12 min read</span>
+      </div>
+      <h1>{post.data.title}</h1>
+      <p class="a-lede">{post.data.description}</p>
+      <div class="a-mirrors">
+        <span class="lozenge accent">EN — reading now</span>
+        {post.data.mirrors.ru && <a class="lozenge" href={post.data.mirrors.ru}>RU mirror ↗</a>}
+        {post.data.mirrors.habr && <a class="lozenge" href={post.data.mirrors.habr} target="_blank" rel="noopener">Habr original ↗</a>}
+      </div>
+
+      <article class="prose">
+        <Content />
+      </article>
+    </div>
+  </div>
+</Base>

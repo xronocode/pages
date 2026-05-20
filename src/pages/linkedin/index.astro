@@ -1,0 +1,46 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const links = (await getCollection('linkedin')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+---
+
+<Base title="LinkedIn" currentNav="linkedin">
+  <div class="page-fade site-frame">
+    <div class="hero">
+      <div class="label"><div class="eyebrow">crosspost · {links.length.toString().padStart(2, '0')} posts</div></div>
+      <div>
+        <h1>Crossposted from <em>LinkedIn</em>.</h1>
+        <p class="lede">
+          Short-form pieces — usually banking-sector outlooks, occasionally retail and AI commentary.
+          Kept here so they survive the platform.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ feed</span></div>
+      <h2>Posts</h2>
+      <span class="meta">newest first</span>
+    </div>
+
+    {links.map(l => (
+      <div class="post-row" style="grid-template-columns: 200px 1fr 120px;">
+        <div>
+          <div class="post-date">{fmt(l.data.date)}</div>
+          <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); margin-top: 4px;">{l.data.topic}</div>
+        </div>
+        <div>
+          <div class="post-title">
+            {l.data.title}
+            <span class="sub">{l.data.description}</span>
+          </div>
+        </div>
+        <div class="post-tags" style="text-align: right;">
+          {l.data.url && <a class="link" href={l.data.url} target="_blank" rel="noopener">Read ↗</a>}
+        </div>
+      </div>
+    ))}
+  </div>
+</Base>

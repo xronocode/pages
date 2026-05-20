@@ -1,17 +1,152 @@
 ---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
 
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const oss = (await getCollection('oss')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const tools = await getCollection('tools');
+
+const latest = posts[0];
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base title="Home" currentNav="home">
+  <div class="page-fade">
+    <section class="site-frame">
+      <!-- hero -->
+      <div class="hero">
+        <div class="label">
+          <div class="eyebrow">CPO · fintech · 2026</div>
+        </div>
+        <div>
+          <h1>Notes and discussions on shipping <em>AI into banking</em>, ecosystems, documents, and autonomous agent workflows.</h1>
+          <p class="lede">
+            A working notebook — essays in English with Russian mirrors, a feed of merged
+            open-source patches, and the small tools I keep around to make all of it tractable.
+          </p>
+          <div class="actions">
+            <a class="pill solid" href="/blog/">Read the essays →</a>
+            <a class="pill" href="/oss/"><span class="dot"></span> {oss.filter(o => o.data.status === 'merged').length} merged PRs</a>
+            <a class="pill" href="/tools/">{tools.length} AI tools</a>
+            <a class="pill" href="/pets/">1 pet project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- stats -->
+      <div class="stats">
+        <div class="stat"><div class="num">{oss.filter(o => o.data.status === 'merged').length.toString().padStart(2, '0')}<sup>merged</sup></div><div class="lab">OSS contributions</div></div>
+        <div class="stat"><div class="num">{posts.length.toString().padStart(2, '0')}<sup>en+ru</sup></div><div class="lab">Essays</div></div>
+        <div class="stat"><div class="num">{tools.length.toString().padStart(2, '0')}<sup>tools</sup></div><div class="lab">Open-source AI</div></div>
+        <div class="stat"><div class="num">{new Set(oss.map(o => o.data.repo)).size.toString().padStart(2, '0')}<sup>upstream</sup></div><div class="lab">Projects touched</div></div>
+      </div>
+
+      <!-- featured essay -->
+      {latest && (
+        <div>
+          <div class="section-header">
+            <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ 01</span></div>
+            <h2>From the notebook</h2>
+            <div style="display: flex; gap: 24px; align-items: baseline;">
+              <span class="meta">latest essay</span>
+              <a class="more link" href="/blog/">All essays →</a>
+            </div>
+          </div>
+          <div class="featured">
+            <div class="label" style="padding-top: 8px;">
+              <div class="featured-meta">
+                <span>{fmt(latest.data.date)}</span>
+                <span class="tag">essay · 12 min</span>
+              </div>
+              <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em;">
+                EN · RU · HABR
+              </div>
+            </div>
+            <div>
+              <div class="featured-art">
+                <span class="placeholder">[ figure: adoption-curve chart ]</span>
+              </div>
+              <h3><a href={`/blog/${latest.id}/`}>{latest.data.title}</a></h3>
+              <p>{latest.data.description}</p>
+              <div class="links">
+                <a class="link" href={`/blog/${latest.id}/`}>Read EN →</a>
+                {latest.data.mirrors.ru && <a class="link" href={latest.data.mirrors.ru}>RU mirror ↗</a>}
+                {latest.data.mirrors.habr && <a class="link" href={latest.data.mirrors.habr} target="_blank" rel="noopener">Habr ↗</a>}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <!-- recent OSS -->
+      <div class="section-header">
+        <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ 02</span></div>
+        <h2>Recent OSS contributions</h2>
+        <div style="display: flex; gap: 24px; align-items: baseline;">
+          <span class="meta">auto-generated from tracker</span>
+          <a class="more link" href="/oss/">Full list →</a>
+        </div>
+      </div>
+      {oss.slice(0, 3).map(o => (
+        <div class="oss-row">
+          <div class="when">
+            <span class={`status ${o.data.status}`}>{o.data.status}</span>
+            <span>{fmt(o.data.date)}</span>
+            <span style="color: var(--ink-4);">{o.data.repo}</span>
+          </div>
+          <div>
+            <div class="repo">{o.data.repo} {o.data.pr}</div>
+            <div class="pr-title">{o.data.title}</div>
+            <div class="pr-desc">{o.data.description}</div>
+            <div class="pr-links">
+              {o.data.links.map(l => (
+                <a class="link" href={l.url} target="_blank" rel="noopener">{l.label} ↗</a>
+              ))}
+            </div>
+          </div>
+          <div class="num">{o.data.num}</div>
+        </div>
+      ))}
+
+      <!-- tools -->
+      <div class="section-header">
+        <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ 03</span></div>
+        <h2>Open-source AI tools</h2>
+        <div style="display: flex; gap: 24px; align-items: baseline;">
+          <span class="meta">{tools.length} in the workshop</span>
+          <a class="more link" href="/tools/">All tools →</a>
+        </div>
+      </div>
+      <div class="card-grid cols-3">
+        {tools.slice(0, 3).map(t => (
+          <a class="card" href="/tools/">
+            <div class="glyph">{t.data.glyph}</div>
+            <h4>{t.data.title}</h4>
+            <p>{t.data.description}</p>
+            <div class="tags">{t.data.tags.map(x => <span>#{x}</span>)}</div>
+          </a>
+        ))}
+      </div>
+
+      <!-- colophon -->
+      <div class="section-header">
+        <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ 04</span></div>
+        <h2>How this notebook is organized</h2>
+        <span class="meta">EN-primary · RU mirrored · Habr archived</span>
+      </div>
+      <div class="row-2col" style="padding-bottom: 40px;">
+        <div class="eyebrow">colophon</div>
+        <div style="max-width: 620px; font-size: 16px; color: var(--ink-2); line-height: 1.6;">
+          <p style="margin-bottom: 14px;">
+            English is the primary reading layer. Each essay also keeps the Russian mirror and the
+            original Habr post next to it — so the site works as both an archive and a bilingual portfolio.
+          </p>
+          <p>
+            The OSS list is auto-generated from a personal tracker; the LinkedIn and Pet Projects
+            sections grow more slowly.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Base>

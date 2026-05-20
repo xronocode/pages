@@ -1,0 +1,41 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const tools = await getCollection('tools');
+---
+
+<Base title="AI Tools" currentNav="tools">
+  <div class="page-fade site-frame">
+    <div class="hero">
+      <div class="label"><div class="eyebrow">workshop · {tools.length.toString().padStart(2, '0')} tools</div></div>
+      <div>
+        <h1>Open tools for <em>agent-shaped</em> work.</h1>
+        <p class="lede">
+          Things I build because the alternative was to do the work by hand. All MIT-licensed,
+          all on GitHub, all in active use.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ tools</span></div>
+      <h2>In the workshop</h2>
+      <span class="meta">{tools.length} projects · MIT</span>
+    </div>
+    <div class="card-grid cols-3">
+      {tools.map(t => (
+        <div class="card">
+          <div class="glyph">{t.data.glyph}</div>
+          <h4>{t.data.title}</h4>
+          <p>{t.data.description}</p>
+          <div class="tags">{t.data.tags.map(x => <span>#{x}</span>)}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="fineprint">
+      Pull requests welcome. Each tool's repo carries a CLAUDE.md describing how to extend it without breaking the contract.
+    </div>
+  </div>
+</Base>

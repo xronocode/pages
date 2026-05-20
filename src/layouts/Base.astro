@@ -1,0 +1,125 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  currentNav?: string;
+}
+
+import '../styles/global.css';
+import CommandPalette from '../components/CommandPalette.astro';
+
+const { title, description = 'Notes & discussions on shipping AI into banking, ecosystems, documents, and autonomous agents.', currentNav = '' } = Astro.props;
+const navItems = [
+  { id: 'home', label: 'home', href: '/' },
+  { id: 'blog', label: 'essays', href: '/blog/' },
+  { id: 'oss', label: 'oss', href: '/oss/' },
+  { id: 'tools', label: 'ai tools', href: '/tools/' },
+  { id: 'pets', label: 'pet projects', href: '/pets/' },
+  { id: 'linkedin', label: 'linkedin', href: '/linkedin/' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title} · xronocode</title>
+  <meta name="description" content={description} />
+  <link rel="icon" href="/favicon.ico" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=IBM+Plex+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-mark"><span>x</span></span>
+      <span><span class="name">xronocode</span> <span class="dim">/ notebook</span></span>
+    </a>
+    <nav class="nav">
+      {navItems.map(item => (
+        <a href={item.href} aria-current={currentNav === item.id ? 'page' : undefined}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <div class="topbar-end">
+      <button class="icon-btn" id="palette-trigger" title="Search (⌘K)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+        </svg>
+      </button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme (⌘J)">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="foot">
+    <div>
+      <div class="col-title">xronocode</div>
+      <div class="sig">Notes & discussions on shipping AI into banking, ecosystems, documents, and autonomous agents.</div>
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--ink-4); margin-top: 18px; letter-spacing: 0.04em;">
+        © 2026 · Astro · cc-by-4.0
+      </div>
+    </div>
+    <div>
+      <div class="col-title">Sections</div>
+      <ul>
+        <li><a href="/blog/">Essays</a></li>
+        <li><a href="/oss/">OSS</a></li>
+        <li><a href="/tools/">AI Tools</a></li>
+        <li><a href="/pets/">Pet projects</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-title">Elsewhere</div>
+      <ul>
+        <li><a href="https://github.com/xronocode" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="https://linkedin.com/in/xronocode" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        <li><a href="https://habr.com/ru/users/Xronofag/" target="_blank" rel="noopener">Habr ↗</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="col-title">Languages</div>
+      <ul>
+        <li><a>EN — primary</a></li>
+        <li><a>RU — mirror</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <CommandPalette />
+
+  <script is:inline>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.dataset.theme = saved;
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.dataset.theme = 'dark';
+
+      document.getElementById('theme-toggle').addEventListener('click', function() {
+        var t = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = t;
+        localStorage.setItem('theme', t);
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'j') {
+          e.preventDefault();
+          document.getElementById('theme-toggle').click();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

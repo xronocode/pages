@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+---
+
+<Base title="Essays" currentNav="blog">
+  <div class="page-fade site-frame">
+    <div class="hero">
+      <div class="label">
+        <div class="eyebrow">archive · {posts.length.toString().padStart(2, '0')} essays</div>
+      </div>
+      <div>
+        <h1>Essays, <em>filed by hand</em>.</h1>
+        <p class="lede">
+          Long-form pieces on AI adoption, interpretability, and the engineering reality of
+          shipping models into regulated workflows. Each has an English original, a Russian
+          mirror, and a Habr counterpart.
+        </p>
+      </div>
+    </div>
+
+    <div>
+      {posts.map(p => (
+        <a class="post-row" href={`/blog/${p.id}/`}>
+          <div class="post-date">{fmt(p.data.date)}</div>
+          <div class="post-num">{p.data.num}</div>
+          <div class="post-title">
+            {p.data.title}
+            <span class="sub">{p.data.description}</span>
+          </div>
+          <div class="post-tags">{p.data.tags.map(t => `#${t}`).join('  ')}</div>
+        </a>
+      ))}
+    </div>
+
+    <div class="fineprint" style="padding-top: 32px;">
+      End of archive. Older work lives on Habr — see <a class="link" href="https://habr.com/ru/users/Xronofag/" target="_blank" rel="noopener">habr.com/users/Xronofag</a>.
+    </div>
+  </div>
+</Base>

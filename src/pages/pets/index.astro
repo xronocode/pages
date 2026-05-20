@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const pets = await getCollection('pets');
+---
+
+<Base title="Pet Projects" currentNav="pets">
+  <div class="page-fade site-frame">
+    <div class="hero">
+      <div class="label"><div class="eyebrow">side · {pets.length.toString().padStart(2, '0')} shipped</div></div>
+      <div>
+        <h1>Pet projects — <em>shipped</em>, not just started.</h1>
+        <p class="lede">
+          Small, finished things. Each one solves an itch that wasn't worth a startup but was
+          worth a weekend.
+        </p>
+      </div>
+    </div>
+
+    <div class="section-header">
+      <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ projects</span></div>
+      <h2>Shipped</h2>
+      <span class="meta">{pets.length} live · more in slow cooker</span>
+    </div>
+    <div class="card-grid">
+      {pets.map(p => (
+        <div class="card" style="min-height: 280px;">
+          <div class="glyph">{p.data.glyph}</div>
+          <h4>{p.data.title}</h4>
+          <p>{p.data.description}</p>
+          <div class="tags">{p.data.tags.map(x => <span>#{x}</span>)}</div>
+          {p.data.version && <div class="corner">{p.data.version}</div>}
+        </div>
+      ))}
+      <div class="card" style="min-height: 280px; opacity: 0.55;">
+        <div class="glyph" style="color: var(--ink-3);">—</div>
+        <h4 style="color: var(--ink-3);">In slow cooker</h4>
+        <p>A static-site bilingual reading tracker — front-end finished, sync layer still under thought.</p>
+        <div class="tags"><span>#wip</span></div>
+        <div class="corner">eta Q3</div>
+      </div>
+    </div>
+  </div>
+</Base>

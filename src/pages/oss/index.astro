@@ -1,0 +1,63 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const all = (await getCollection('oss')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const merged = all.filter(o => o.data.status === 'merged');
+const repos = new Set(all.map(o => o.data.repo));
+const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+---
+
+<Base title="OSS Contributions" currentNav="oss">
+  <div class="page-fade site-frame">
+    <div class="hero">
+      <div class="label">
+        <div class="eyebrow">tracker · {merged.length.toString().padStart(2, '0')} merged</div>
+      </div>
+      <div>
+        <h1>Patches sent <em>upstream</em>.</h1>
+        <p class="lede">
+          {merged.length} merged contributions across {repos.size} projects — fintech-adjacent, document-tooling, and
+          agent infrastructure. Auto-generated from a personal tracker; ordered newest first.
+        </p>
+        <div class="actions">
+          <a class="pill solid" href="https://github.com/xronocode" target="_blank" rel="noopener">View on GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">{merged.length.toString().padStart(2, '0')}<sup>merged</sup></div><div class="lab">Pull requests</div></div>
+      <div class="stat"><div class="num">{repos.size.toString().padStart(2, '0')}<sup>upstream</sup></div><div class="lab">Projects</div></div>
+      <div class="stat"><div class="num">62<sup>files</sup></div><div class="lab">Files touched</div></div>
+      <div class="stat"><div class="num">+2.1k<sup>/ −1.4k</sup></div><div class="lab">Line delta</div></div>
+    </div>
+
+    <div class="section-header">
+      <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ feed</span></div>
+      <h2>All contributions</h2>
+      <span class="meta">newest first · {all.length} entries</span>
+    </div>
+
+    {all.map(o => (
+      <div class="oss-row">
+        <div class="when">
+          <span class={`status ${o.data.status}`}>{o.data.status}</span>
+          <span>{fmt(o.data.date)}</span>
+          <span style="color: var(--ink-4);">{o.data.repo}</span>
+        </div>
+        <div>
+          <div class="repo">{o.data.repo} {o.data.pr}</div>
+          <div class="pr-title">{o.data.title}</div>
+          <div class="pr-desc">{o.data.description}</div>
+          <div class="pr-links">
+            {o.data.links.map(l => (
+              <a class="link" href={l.url} target="_blank" rel="noopener">{l.label} ↗</a>
+            ))}
+          </div>
+        </div>
+        <div class="num">{o.data.num}</div>
+      </div>
+    ))}
+  </div>
+</Base>
