@@ -8,21 +8,11 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'n
 
 <Base title="LinkedIn" currentNav="linkedin">
   <div class="page-fade site-frame">
-    <div class="hero">
+    <div class="hero" style="padding: var(--row) 0;">
       <div class="label"><div class="eyebrow">crosspost · {links.length.toString().padStart(2, '0')} posts</div></div>
       <div>
         <h1>Crossposted from <em>LinkedIn</em>.</h1>
-        <p class="lede">
-          Short-form pieces — usually banking-sector outlooks, occasionally retail and AI commentary.
-          Kept here so they survive the platform.
-        </p>
       </div>
-    </div>
-
-    <div class="section-header">
-      <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ feed</span></div>
-      <h2>Posts</h2>
-      <span class="meta">newest first</span>
     </div>
 
     {links.map(l => (

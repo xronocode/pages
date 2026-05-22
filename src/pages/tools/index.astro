@@ -7,21 +7,11 @@ const tools = await getCollection('tools');
 
 <Base title="AI Tools" currentNav="tools">
   <div class="page-fade site-frame">
-    <div class="hero">
+    <div class="hero" style="padding: var(--row) 0;">
       <div class="label"><div class="eyebrow">workshop · {tools.length.toString().padStart(2, '0')} tools</div></div>
       <div>
         <h1>Open tools for <em>agent-shaped</em> work.</h1>
-        <p class="lede">
-          Things I build because the alternative was to do the work by hand. All MIT-licensed,
-          all on GitHub, all in active use.
-        </p>
       </div>
-    </div>
-
-    <div class="section-header">
-      <div class="eyebrow"><span style="font-family: var(--mono); color: var(--ink-3);">§ tools</span></div>
-      <h2>In the workshop</h2>
-      <span class="meta">{tools.length} projects · MIT</span>
     </div>
     <div class="card-grid cols-3">
       {tools.map(t => (
