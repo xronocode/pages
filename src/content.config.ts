@@ -11,6 +11,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).default([]),
     mirrors: z.object({
       ru: z.string().optional(),
+      en: z.string().optional(),
       habr: z.string().optional(),
     }).default({}),
   }),

@@ -10,6 +10,7 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const isRu = post.id.endsWith('-ru');
 ---
 
 <Base title={post.data.title} currentNav="blog">
@@ -27,8 +28,17 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'n
       <h1>{post.data.title}</h1>
       <p class="a-lede">{post.data.description}</p>
       <div class="a-mirrors">
-        <span class="lozenge accent">EN — reading now</span>
-        {post.data.mirrors.ru && <a class="lozenge" href={post.data.mirrors.ru}>RU mirror ↗</a>}
+        {isRu ? (
+          <>
+            <span class="lozenge accent">RU — reading now</span>
+            {post.data.mirrors.en && <a class="lozenge" href={post.data.mirrors.en}>EN translation ↗</a>}
+          </>
+        ) : (
+          <>
+            <span class="lozenge accent">EN — reading now</span>
+            {post.data.mirrors.ru && <a class="lozenge" href={post.data.mirrors.ru}>RU mirror ↗</a>}
+          </>
+        )}
         {post.data.mirrors.habr && <a class="lozenge" href={post.data.mirrors.habr} target="_blank" rel="noopener">Habr original ↗</a>}
       </div>
 
