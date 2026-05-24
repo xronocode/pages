@@ -43,13 +43,15 @@ function initApp() {
 
   dom.githubRepo.value = loadRepoSlug()
 
-  dom.pasteZone.addEventListener('paste', (event) => handlePasteCapture(event, dom))
+  document.addEventListener('paste', (event) => handleDocumentPaste(event, dom), true)
+  dom.pasteZone.addEventListener('click', () => dom.pasteZone.focus())
   dom.downloadCapture.addEventListener('click', () => downloadCapture())
   dom.copyPacket.addEventListener('click', () => copyFixturePacket(dom))
   dom.createIssue.addEventListener('click', () => createGitHubIssue(dom))
   dom.githubRepo.addEventListener('change', () => persistRepoSlug(dom.githubRepo.value))
   dom.githubRepo.addEventListener('blur', () => persistRepoSlug(dom.githubRepo.value))
 
+  dom.pasteZone.focus()
   render(dom, 'Ready. Focus the capture zone and paste.')
 }
 
@@ -78,6 +80,14 @@ function getDom() {
 //   SIDE_EFFECTS: Prevents default paste rendering and updates DOM state.
 //   LINKS: M-044, V-M-044
 // END_CONTRACT: handlePasteCapture
+function handleDocumentPaste(event, dom) {
+  if (!shouldCapturePaste(event)) {
+    return
+  }
+
+  handlePasteCapture(event, dom)
+}
+
 function handlePasteCapture(event, dom) {
   event.preventDefault()
   const core = getCoreApi()
@@ -93,6 +103,7 @@ function handlePasteCapture(event, dom) {
   })
 
   const types = state.capture.clipboard.advertisedTypes.join(', ') || 'no advertised types'
+  dom.pasteZone.focus()
   render(dom, `Captured ${types}.`)
 }
 
@@ -267,6 +278,19 @@ function buildRenderedPreviewDoc(html) {
     '</body>',
     '</html>'
   ].join('')
+}
+
+function shouldCapturePaste(event) {
+  const target = event.target
+  if (!(target instanceof HTMLElement)) {
+    return true
+  }
+
+  if (target.id === 'sourceLabel' || target.id === 'githubRepo') {
+    return false
+  }
+
+  return true
 }
 
 function downloadJson(fileName, payload) {
