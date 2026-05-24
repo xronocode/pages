@@ -1,8 +1,8 @@
 // FILE: tools/clipboard-capture/app.js
-// VERSION: 1.0.0
+// VERSION: 1.1.0
 // START_MODULE_CONTRACT
-//   PURPOSE: Drive the standalone clipboard fixture capture UI so users on any desktop browser can paste rendered content and export deterministic JSON fixtures.
-//   SCOPE: DOM event handling, capture history persistence, JSON export, GitHub issue handoff, and read-only rendering of clipboard payload previews.
+//   PURPOSE: Drive the standalone clipboard fixture capture UI so users can paste once, inspect the rendered/text result, and export or report the current fixture.
+//   SCOPE: DOM event handling, single-capture state, rendered preview, preferred text preview, JSON export, and GitHub issue handoff.
 //   DEPENDS: tools/clipboard-capture/capture-core.browser.js, browser DOM APIs, optional localStorage.
 //   LINKS: M-044, V-M-044
 //   ROLE: SCRIPT
@@ -10,22 +10,19 @@
 // END_MODULE_CONTRACT
 //
 // START_MODULE_MAP
-//   initApp - Wires the DOM and bootstraps persisted history.
-//   handlePasteCapture - Converts one paste event into a stored capture record.
-//   render - Renders toolbar state, history list, and selected capture details.
+//   initApp - Wires the DOM and bootstraps the single-capture UI.
+//   handlePasteCapture - Converts one paste event into the current capture record.
+//   render - Renders status, summary, rendered preview, and preferred text preview.
 // END_MODULE_MAP
 
-const STORAGE_KEY = 'mark.clipboard.fixture.capture.history.v1'
 const REPO_STORAGE_KEY = 'mark.clipboard.fixture.capture.github-repo.v1'
-const MAX_HISTORY = 20
 
 const state = {
-  captures: [],
-  selectedId: null
+  capture: null
 }
 
 // START_CONTRACT: initApp
-//   PURPOSE: Initialize DOM references, wire event handlers, and render persisted history.
+//   PURPOSE: Initialize DOM references, wire event handlers, and render the empty single-capture state.
 //   INPUTS: none
 //   OUTPUTS: { void }
 //   SIDE_EFFECTS: Attaches DOM listeners and may read localStorage.
@@ -44,16 +41,12 @@ function initApp() {
     return
   }
 
-  state.captures = loadHistory()
-  state.selectedId = state.captures[0]?.captureId || null
   dom.githubRepo.value = loadRepoSlug()
 
   dom.pasteZone.addEventListener('paste', (event) => handlePasteCapture(event, dom))
-  dom.exportLatest.addEventListener('click', () => exportLatestCapture())
-  dom.exportHistory.addEventListener('click', () => exportHistory())
-  dom.copyIssuePacket.addEventListener('click', () => copyIssuePacket(dom))
+  dom.downloadCapture.addEventListener('click', () => downloadCapture())
+  dom.copyPacket.addEventListener('click', () => copyFixturePacket(dom))
   dom.createIssue.addEventListener('click', () => createGitHubIssue(dom))
-  dom.clearHistory.addEventListener('click', () => clearHistory())
   dom.githubRepo.addEventListener('change', () => persistRepoSlug(dom.githubRepo.value))
   dom.githubRepo.addEventListener('blur', () => persistRepoSlug(dom.githubRepo.value))
 
@@ -63,26 +56,26 @@ function initApp() {
 function getDom() {
   return {
     sourceLabel: document.querySelector('#sourceLabel'),
-    note: document.querySelector('#note'),
     githubRepo: document.querySelector('#githubRepo'),
     pasteZone: document.querySelector('#pasteZone'),
-    exportLatest: document.querySelector('#exportLatest'),
-    exportHistory: document.querySelector('#exportHistory'),
-    copyIssuePacket: document.querySelector('#copyIssuePacket'),
+    downloadCapture: document.querySelector('#downloadCapture'),
+    copyPacket: document.querySelector('#copyPacket'),
     createIssue: document.querySelector('#createIssue'),
-    clearHistory: document.querySelector('#clearHistory'),
     status: document.querySelector('#status'),
     summary: document.querySelector('#summary'),
-    historyList: document.querySelector('#historyList'),
-    details: document.querySelector('#details')
+    renderedMeta: document.querySelector('#renderedMeta'),
+    htmlPreview: document.querySelector('#htmlPreview'),
+    renderFallback: document.querySelector('#renderFallback'),
+    textMeta: document.querySelector('#textMeta'),
+    textPayload: document.querySelector('#textPayload')
   }
 }
 
 // START_CONTRACT: handlePasteCapture
-//   PURPOSE: Build and persist one capture record from a browser paste event, then re-render the UI.
+//   PURPOSE: Build one capture record from a browser paste event and replace the current UI state with it.
 //   INPUTS: { event: ClipboardEvent - Browser paste event, dom: object - Cached DOM references }
 //   OUTPUTS: { void }
-//   SIDE_EFFECTS: Prevents default paste rendering, writes localStorage, updates DOM.
+//   SIDE_EFFECTS: Prevents default paste rendering and updates DOM state.
 //   LINKS: M-044, V-M-044
 // END_CONTRACT: handlePasteCapture
 function handlePasteCapture(event, dom) {
@@ -94,25 +87,20 @@ function handlePasteCapture(event, dom) {
     return
   }
 
-  const record = core.buildCaptureRecord({
+  state.capture = core.buildCaptureRecord({
     dataTransfer: event.clipboardData,
-    sourceLabel: dom.sourceLabel.value,
-    note: dom.note.value
+    sourceLabel: dom.sourceLabel.value
   })
 
-  state.captures = [record, ...state.captures].slice(0, MAX_HISTORY)
-  state.selectedId = record.captureId
-  persistHistory()
-
-  const types = record.clipboard.advertisedTypes.join(', ') || 'no advertised types'
-  render(dom, `Captured ${record.captureId} with ${types}.`)
+  const types = state.capture.clipboard.advertisedTypes.join(', ') || 'no advertised types'
+  render(dom, `Captured ${types}.`)
 }
 
 function render(dom, statusMessage) {
   renderStatus(dom.status, statusMessage)
   renderSummary(dom.summary)
-  renderHistory(dom.historyList, dom)
-  renderDetails(dom.details)
+  renderRenderedPreview(dom)
+  renderTextPayload(dom)
   syncToolbar(dom)
 }
 
@@ -121,243 +109,101 @@ function renderStatus(container, message) {
 }
 
 function renderSummary(container) {
-  const latest = state.captures[0]
-  const totalCaptures = state.captures.length
-
-  if (!latest) {
+  const record = state.capture
+  if (!record) {
     container.textContent =
-      'No captures yet. Paste a rendered answer, README section, or docs fragment to create the first fixture.'
+      'Paste a rendered answer, README fragment, or docs block to inspect the browser-visible clipboard payload.'
     return
   }
 
-  const types = latest.clipboard.advertisedTypes.join(', ') || 'none'
+  const preferred = getPreferredTextPayload(record)
+  const types = record.clipboard.advertisedTypes.join(', ') || 'none'
   container.textContent =
-    `Captures: ${totalCaptures}. Latest source: ${latest.sourceLabel || 'unlabeled'}; ` +
-    `types: ${types}; files: ${latest.clipboard.fileCount}.`
+    `Source: ${record.sourceLabel || 'unlabeled'}; types: ${types}; ` +
+    `preferred text: ${preferred?.type || 'none'}; files: ${record.clipboard.fileCount}.`
 }
 
-function renderHistory(container, dom) {
-  container.replaceChildren()
+function renderRenderedPreview(dom) {
+  const record = state.capture
 
-  if (state.captures.length === 0) {
-    const empty = document.createElement('p')
-    empty.className = 'empty-block'
-    empty.textContent = 'History is empty.'
-    container.append(empty)
+  if (!record) {
+    dom.renderedMeta.textContent = 'No capture yet.'
+    dom.htmlPreview.srcdoc = ''
+    dom.htmlPreview.classList.add('is-hidden')
+    dom.renderFallback.classList.remove('is-hidden')
+    dom.renderFallback.textContent =
+      'Rendered preview will appear here after paste. HTML payloads render in a sandboxed iframe.'
     return
   }
 
-  for (const capture of state.captures) {
-    const button = document.createElement('button')
-    button.type = 'button'
-    button.className = capture.captureId === state.selectedId ? 'history-item active' : 'history-item'
-    button.addEventListener('click', () => {
-      state.selectedId = capture.captureId
-      render(dom, `Selected ${capture.captureId}.`)
-    })
-
-    const title = document.createElement('strong')
-    title.textContent = capture.sourceLabel || 'unlabeled capture'
-
-    const meta = document.createElement('span')
-    meta.className = 'history-meta'
-    meta.textContent =
-      `${formatCapturedAt(capture.capturedAt)} | ${capture.clipboard.advertisedTypes.join(', ') || 'no types'}`
-
-    button.append(title, meta)
-    container.append(button)
-  }
-}
-
-function renderDetails(container) {
-  container.replaceChildren()
-
-  const selected = state.captures.find((capture) => capture.captureId === state.selectedId) || state.captures[0]
-
-  if (!selected) {
-    const empty = document.createElement('p')
-    empty.className = 'empty-block'
-    empty.textContent = 'Select a capture to inspect its payloads.'
-    container.append(empty)
+  const htmlPayload = record.payloads.text['text/html']
+  if (htmlPayload?.value) {
+    dom.renderedMeta.textContent = `Rendered from text/html | ${htmlPayload.length} chars`
+    dom.htmlPreview.srcdoc = buildRenderedPreviewDoc(htmlPayload.value)
+    dom.htmlPreview.classList.remove('is-hidden')
+    dom.renderFallback.classList.add('is-hidden')
+    dom.renderFallback.textContent = ''
     return
   }
 
-  container.append(createMetaCard(selected))
-  container.append(createFamiliesCard(selected))
+  const preferred = getPreferredTextPayload(record)
+  dom.renderedMeta.textContent = preferred
+    ? `Fallback preview from ${preferred.type}`
+    : 'No renderable preview available.'
+  dom.htmlPreview.srcdoc = ''
+  dom.htmlPreview.classList.add('is-hidden')
+  dom.renderFallback.classList.remove('is-hidden')
+  dom.renderFallback.textContent = preferred?.payload.value || 'No HTML or text payload was exposed by this browser.'
+}
 
-  const textEntries = Object.entries(selected.payloads.text)
-  if (textEntries.length === 0) {
-    const empty = document.createElement('p')
-    empty.className = 'empty-block'
-    empty.textContent = 'No text payloads were exposed by this browser.'
-    container.append(empty)
-  } else {
-    for (const [type, payload] of textEntries) {
-      container.append(createTextPayloadCard(type, payload))
-    }
+function renderTextPayload(dom) {
+  const record = state.capture
+
+  if (!record) {
+    dom.textMeta.textContent = 'No capture yet.'
+    dom.textPayload.value = ''
+    return
   }
 
-  if (selected.payloads.files.length > 0) {
-    container.append(createFilesCard(selected.payloads.files))
+  const preferred = getPreferredTextPayload(record)
+  if (!preferred) {
+    dom.textMeta.textContent = 'No text payloads were exposed by this browser.'
+    dom.textPayload.value = ''
+    return
   }
 
-  if (selected.payloads.items.length > 0) {
-    container.append(createItemsCard(selected.payloads.items))
-  }
-}
-
-function createMetaCard(capture) {
-  const card = createCard('Capture metadata')
-  const list = document.createElement('dl')
-  list.className = 'meta-grid'
-
-  appendMetaPair(list, 'Capture ID', capture.captureId)
-  appendMetaPair(list, 'Captured at', capture.capturedAt)
-  appendMetaPair(list, 'Source label', capture.sourceLabel || 'unlabeled')
-  appendMetaPair(list, 'Note', capture.note || 'none')
-  appendMetaPair(list, 'Platform', capture.platform.platform || 'unknown')
-  appendMetaPair(list, 'Time zone', capture.platform.timeZone || 'unknown')
-  appendMetaPair(list, 'Advertised types', capture.clipboard.advertisedTypes.join(', ') || 'none')
-
-  card.append(list)
-  return card
-}
-
-function createFamiliesCard(capture) {
-  const card = createCard('Presence flags')
-  const list = document.createElement('ul')
-  list.className = 'flag-list'
-  const families = capture.clipboard.families
-  const entries = [
-    ['hasMarkdown', families.hasMarkdown],
-    ['hasHtml', families.hasHtml],
-    ['hasPlain', families.hasPlain],
-    ['hasRtf', families.hasRtf],
-    ['hasFiles', families.hasFiles],
-    ['hasImageFiles', families.hasImageFiles],
-    ['customTextTypes', families.customTextTypes.join(', ') || 'none']
-  ]
-
-  for (const [label, value] of entries) {
-    const item = document.createElement('li')
-    item.textContent = `${label}: ${String(value)}`
-    list.append(item)
-  }
-
-  card.append(list)
-  return card
-}
-
-function createTextPayloadCard(type, payload) {
-  const card = createCard(type)
-  const stats = document.createElement('p')
-  stats.className = 'payload-meta'
-  stats.textContent = `length=${payload.length}, lines=${payload.lineCount}`
-
-  const area = document.createElement('textarea')
-  area.className = 'payload-area'
-  area.readOnly = true
-  area.spellcheck = false
-  area.value = payload.value
-
-  card.append(stats, area)
-  return card
-}
-
-function createFilesCard(files) {
-  const card = createCard('Files')
-  const list = document.createElement('ul')
-  list.className = 'flag-list'
-
-  for (const file of files) {
-    const item = document.createElement('li')
-    item.textContent = `${file.name || '(unnamed)'} | ${file.type || 'unknown'} | ${formatBytes(file.size)}`
-    list.append(item)
-  }
-
-  card.append(list)
-  return card
-}
-
-function createItemsCard(items) {
-  const card = createCard('Clipboard items')
-  const list = document.createElement('ul')
-  list.className = 'flag-list'
-
-  for (const item of items) {
-    const line = document.createElement('li')
-    line.textContent =
-      `#${item.index} | kind=${item.kind} | type=${item.type || '(empty)'} | ` +
-      `file=${item.fileName || 'none'}`
-    list.append(line)
-  }
-
-  card.append(list)
-  return card
-}
-
-function createCard(title) {
-  const section = document.createElement('section')
-  section.className = 'card'
-
-  const heading = document.createElement('h3')
-  heading.textContent = title
-
-  section.append(heading)
-  return section
-}
-
-function appendMetaPair(container, label, value) {
-  const term = document.createElement('dt')
-  term.textContent = label
-  const desc = document.createElement('dd')
-  desc.textContent = value
-  container.append(term, desc)
+  dom.textMeta.textContent =
+    `${preferred.type} | ${preferred.payload.length} chars | ${preferred.payload.lineCount} lines`
+  dom.textPayload.value = preferred.payload.value
 }
 
 function syncToolbar(dom) {
-  const hasCaptures = state.captures.length > 0
-  dom.exportLatest.disabled = !hasCaptures
-  dom.exportHistory.disabled = !hasCaptures
-  dom.copyIssuePacket.disabled = !hasCaptures
-  dom.createIssue.disabled = !hasCaptures
-  dom.clearHistory.disabled = !hasCaptures
+  const hasCapture = Boolean(state.capture)
+  dom.downloadCapture.disabled = !hasCapture
+  dom.copyPacket.disabled = !hasCapture
+  dom.createIssue.disabled = !hasCapture
 }
 
-function exportLatestCapture() {
-  const latest = state.captures[0]
-  if (!latest) return
-  downloadJson(getCoreApi().createExportFilename(latest, 'single'), latest)
+function downloadCapture() {
+  const record = state.capture
+  if (!record) return
+  downloadJson(getCoreApi().createExportFilename(record, 'single'), record)
 }
 
-function exportHistory() {
-  if (state.captures.length === 0) return
-
-  const record = state.captures[0]
-  downloadJson(
-    getCoreApi().createExportFilename(record, 'history'),
-    getCoreApi().buildHistoryEnvelope(state.captures)
-  )
-}
-
-function clearHistory() {
-  state.captures = []
-  state.selectedId = null
-  persistHistory()
-  render(getDom(), 'History cleared.')
-}
-
-async function copyIssuePacket(dom) {
-  const record = getSelectedCapture()
+async function copyFixturePacket(dom) {
+  const record = state.capture
   if (!record) return
 
   const packet = getCoreApi().buildIssuePacket(record)
   const copied = await copyText(packet)
-  render(dom, copied ? 'Full issue packet copied to clipboard.' : 'Could not copy issue packet automatically.')
+  render(
+    dom,
+    copied ? 'Fixture packet copied to clipboard.' : 'Could not copy the fixture packet automatically.'
+  )
 }
 
 async function createGitHubIssue(dom) {
-  const record = getSelectedCapture()
+  const record = state.capture
   if (!record) return
 
   const repo = String(dom.githubRepo.value || '').trim()
@@ -381,9 +227,46 @@ async function createGitHubIssue(dom) {
   render(
     dom,
     copied
-      ? `Opened GitHub issue for ${repo}; full packet copied to clipboard.`
-      : `Opened GitHub issue for ${repo}; if needed, download JSON and attach it manually.`
+      ? `Opened GitHub issue for ${repo}; fixture packet copied to clipboard.`
+      : `Opened GitHub issue for ${repo}; download JSON if you need to attach the raw fixture manually.`
   )
+}
+
+function getPreferredTextPayload(record) {
+  const textPayloads = record?.payloads?.text || {}
+  const preferredTypes = ['text/markdown', 'text/x-markdown', 'text/plain', 'text/html']
+
+  for (const type of preferredTypes) {
+    if (textPayloads[type]) {
+      return { type, payload: textPayloads[type] }
+    }
+  }
+
+  return null
+}
+
+function buildRenderedPreviewDoc(html) {
+  return [
+    '<!doctype html>',
+    '<html lang="en">',
+    '<head>',
+    '<meta charset="UTF-8" />',
+    '<meta name="viewport" content="width=device-width, initial-scale=1.0" />',
+    '<base target="_blank" />',
+    '<style>',
+    'html,body{margin:0;padding:0;background:#fff9ee;color:#2a2218;font:16px/1.55 Georgia,serif;}',
+    'body{padding:18px;}',
+    'img,svg,video,canvas,table,pre{max-width:100%;}',
+    'pre{white-space:pre-wrap;overflow-wrap:anywhere;}',
+    'code,pre{font-family:SFMono-Regular,Consolas,monospace;}',
+    'blockquote{margin:0;padding-left:14px;border-left:3px solid rgba(22,96,93,0.28);color:#665948;}',
+    '</style>',
+    '</head>',
+    '<body>',
+    html,
+    '</body>',
+    '</html>'
+  ].join('')
 }
 
 function downloadJson(fileName, payload) {
@@ -397,17 +280,6 @@ function downloadJson(fileName, payload) {
   anchor.click()
   anchor.remove()
   setTimeout(() => URL.revokeObjectURL(url), 0)
-}
-
-function loadHistory() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY)
-    if (!raw) return []
-    const parsed = JSON.parse(raw)
-    return Array.isArray(parsed) ? parsed : []
-  } catch {
-    return []
-  }
 }
 
 function loadRepoSlug() {
@@ -428,10 +300,6 @@ function persistRepoSlug(value) {
 
 function getCoreApi() {
   return globalThis.ClipboardCaptureCore || null
-}
-
-function getSelectedCapture() {
-  return state.captures.find((capture) => capture.captureId === state.selectedId) || state.captures[0] || null
 }
 
 function isValidRepoSlug(value) {
@@ -467,34 +335,6 @@ async function copyText(value) {
   } finally {
     area.remove()
   }
-}
-
-function persistHistory() {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(state.captures))
-  } catch {
-    // localStorage is optional; export still works without it.
-  }
-}
-
-function formatCapturedAt(value) {
-  try {
-    return new Date(value).toLocaleString()
-  } catch {
-    return value
-  }
-}
-
-function formatBytes(size) {
-  if (!Number.isFinite(size) || size < 1024) {
-    return `${size || 0} B`
-  }
-
-  if (size < 1024 * 1024) {
-    return `${(size / 1024).toFixed(1)} KB`
-  }
-
-  return `${(size / (1024 * 1024)).toFixed(1)} MB`
 }
 
 initApp()

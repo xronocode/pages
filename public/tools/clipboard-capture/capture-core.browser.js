@@ -227,36 +227,33 @@
   function buildIssueBody(record, { copiedFullPacket }) {
     const safeRecord = record || {}
     const types = (safeRecord.clipboard && safeRecord.clipboard.advertisedTypes || []).join(', ') || 'none'
-    const note = safeRecord.note || 'none'
-    const previews = buildPreviewSection(safeRecord)
+    const selectionPreview = buildSelectionPreview(safeRecord)
     const packetHint = copiedFullPacket
-      ? 'The full fixture packet was copied to the clipboard by the capture tool. Paste it below if needed.'
-      : 'Use the capture tool to copy or download the full fixture packet and attach it below if needed.'
+      ? 'The full fixture packet was copied to the clipboard by the capture tool. Paste it below if raw payload evidence is needed.'
+      : 'Use the capture tool to copy or download the full fixture packet, then paste it below if raw payload evidence is needed.'
 
     return [
-      '## Summary',
-      'Describe what formatting was expected and what Mark rendered instead.',
+      '## What broke',
+      '- Expected in Mark:',
+      '- Actual in Mark:',
       '',
-      '## Reproduction',
-      '1. Open the source surface.',
-      '2. Copy the rendered selection.',
-      '3. Paste into Mark.',
-      '4. Observe the mismatch.',
-      '',
-      '## Capture metadata',
+      '## Source context',
       `- Source label: ${safeRecord.sourceLabel || 'unlabeled'}`,
+      `- Selection preview: ${selectionPreview || 'unavailable'}`,
+      `- Reporter note: ${safeRecord.note || 'none'}`,
+      '',
+      '## Clipboard capture',
       `- Captured at: ${safeRecord.capturedAt || 'unknown'}`,
       `- Platform: ${safeRecord.platform && safeRecord.platform.platform || 'unknown'}`,
-      `- Time zone: ${safeRecord.platform && safeRecord.platform.timeZone || 'unknown'}`,
       `- Advertised types: ${types}`,
       `- Flags: ${buildFlagSummary(safeRecord)}`,
-      `- Note: ${note}`,
       '',
-      '## Payload summary',
+      '<details>',
+      '<summary>Payload inventory</summary>',
+      '',
       ...buildPayloadSummaryLines(safeRecord),
       '',
-      '## Compact previews',
-      previews,
+      '</details>',
       '',
       '## Full fixture',
       packetHint,
@@ -275,23 +272,23 @@
     })
   }
 
-  function buildPreviewSection(record) {
-    const textEntries = Object.entries(record && record.payloads && record.payloads.text || {})
-    if (textEntries.length === 0) {
-      return 'No text previews available.'
+  function buildSelectionPreview(record) {
+    const textPayloads = record && record.payloads && record.payloads.text || {}
+    const preferredTypes = ['text/markdown', 'text/x-markdown', 'text/plain']
+
+    for (const type of preferredTypes) {
+      const payload = textPayloads[type]
+      if (!payload || !payload.value) {
+        continue
+      }
+
+      const normalized = String(payload.value).replace(/\s+/g, ' ').trim()
+      if (normalized.length > 0) {
+        return clipText(normalized, 160)
+      }
     }
 
-    return textEntries
-      .slice(0, 3)
-      .map(([type, payload]) => {
-        return [
-          `### ${type}`,
-          '```text',
-          clipText(payload.value, 260),
-          '```'
-        ].join('\n')
-      })
-      .join('\n\n')
+    return ''
   }
 
   function buildFlagSummary(record) {

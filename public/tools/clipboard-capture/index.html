@@ -45,17 +45,6 @@
           </label>
         </div>
 
-        <div class="field-row">
-          <label class="field field-wide">
-            <span>Notes</span>
-            <textarea
-              id="note"
-              rows="2"
-              placeholder="Optional context: browser, app surface, what was selected before copy."
-            ></textarea>
-          </label>
-        </div>
-
         <div
           id="pasteZone"
           class="paste-zone"
@@ -64,15 +53,13 @@
           aria-label="Clipboard capture zone"
         >
           Click here, then press Ctrl/Cmd+V. The page will intercept the paste and store the
-          clipboard payload instead of inserting it.
+          clipboard payload instead of inserting it. A new paste replaces the current capture.
         </div>
 
         <div class="toolbar">
-          <button id="exportLatest" type="button">Download latest JSON</button>
-          <button id="exportHistory" type="button">Download full history</button>
-          <button id="copyIssuePacket" type="button">Copy issue packet</button>
-          <button id="createIssue" type="button">Create GitHub issue</button>
-          <button id="clearHistory" type="button" class="ghost">Clear history</button>
+          <button id="copyPacket" type="button">Copy fixture packet</button>
+          <button id="downloadCapture" type="button">Download JSON</button>
+          <button id="createIssue" type="button">Open GitHub issue</button>
         </div>
 
         <p id="status" class="status" aria-live="polite"></p>
@@ -83,15 +70,34 @@
         <p id="summary" class="summary-copy"></p>
       </section>
 
-      <section class="grid">
+      <section class="results-grid">
         <section class="panel">
-          <h2>Capture History</h2>
-          <div id="historyList" class="history-list"></div>
+          <div class="result-head">
+            <h2>Rendered preview</h2>
+            <p id="renderedMeta" class="result-meta"></p>
+          </div>
+          <iframe
+            id="htmlPreview"
+            class="render-frame is-hidden"
+            title="Rendered clipboard preview"
+            sandbox=""
+            referrerpolicy="no-referrer"
+          ></iframe>
+          <pre id="renderFallback" class="render-fallback"></pre>
         </section>
 
         <section class="panel">
-          <h2>Selected Capture</h2>
-          <div id="details" class="details-stack"></div>
+          <div class="result-head">
+            <h2>Preferred text payload</h2>
+            <p id="textMeta" class="result-meta"></p>
+          </div>
+          <textarea
+            id="textPayload"
+            class="payload-area"
+            readonly
+            spellcheck="false"
+            placeholder="Clipboard text payload will appear here after paste."
+          ></textarea>
         </section>
       </section>
     </main>

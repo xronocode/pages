@@ -1,8 +1,8 @@
 /* FILE: tools/clipboard-capture/styles.css */
 /* VERSION: 1.0.0 */
 /* START_MODULE_CONTRACT
-   PURPOSE: Style the standalone clipboard fixture capture page with a readable, high-contrast layout suited for long raw payload inspection.
-   SCOPE: Page shell, cards, controls, history list, and readonly payload preview fields.
+   PURPOSE: Style the standalone clipboard fixture capture page with a readable, high-contrast layout suited for quick single-capture inspection.
+   SCOPE: Page shell, controls, rendered preview, and readonly payload preview fields.
    DEPENDS: tools/clipboard-capture/index.html
    LINKS: M-044, V-M-044
 END_MODULE_CONTRACT */
@@ -117,9 +117,9 @@ h3 {
   margin-bottom: 18px;
 }
 
-.grid {
+.results-grid {
   display: grid;
-  grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
   gap: 18px;
 }
 
@@ -147,21 +147,20 @@ h3 {
 }
 
 .field input,
-.field textarea,
 .payload-area,
-.paste-zone {
+.paste-zone,
+.render-frame,
+.render-fallback {
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--panel-strong);
   color: var(--ink);
 }
 
-.field input,
-.field textarea {
+.field input {
   width: 100%;
   padding: 12px 14px;
   font: inherit;
-  resize: vertical;
 }
 
 .paste-zone {
@@ -206,68 +205,24 @@ button:disabled {
   opacity: 0.45;
 }
 
-button.ghost {
-  background: rgba(102, 89, 72, 0.14);
-  color: var(--ink);
-}
-
 .status {
   min-height: 1.4em;
   margin: 12px 0 0;
 }
 
-.history-list,
-.details-stack {
+.result-head {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
 }
 
-.history-item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 6px;
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 18px;
-  border: 1px solid var(--line);
-  background: rgba(255, 249, 238, 0.7);
-  color: var(--ink);
-  text-align: left;
-}
-
-.history-item.active {
-  background: var(--accent-soft);
-  border-color: rgba(22, 96, 93, 0.42);
-}
-
-.card {
-  padding: 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: rgba(255, 251, 243, 0.9);
-}
-
-.meta-grid {
-  display: grid;
-  grid-template-columns: minmax(120px, 180px) minmax(0, 1fr);
-  gap: 8px 14px;
+.result-meta {
   margin: 0;
-}
-
-.meta-grid dt {
-  font-weight: 700;
-}
-
-.meta-grid dd {
-  margin: 0;
-  overflow-wrap: anywhere;
-}
-
-.flag-list {
-  margin: 0;
-  padding-left: 18px;
+  font-size: 0.92rem;
+  color: var(--muted);
+  text-align: right;
 }
 
 .payload-meta {
@@ -276,7 +231,7 @@ button.ghost {
 
 .payload-area {
   width: 100%;
-  min-height: 190px;
+  min-height: 420px;
   padding: 14px;
   resize: vertical;
   font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
@@ -284,8 +239,28 @@ button.ghost {
   line-height: 1.4;
 }
 
+.render-frame {
+  width: 100%;
+  min-height: 420px;
+}
+
+.render-fallback {
+  margin: 0;
+  min-height: 420px;
+  padding: 16px;
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .empty-block {
   margin: 0;
+}
+
+.is-hidden {
+  display: none;
 }
 
 @media (max-width: 920px) {
@@ -294,8 +269,17 @@ button.ghost {
     margin-top: 12px;
   }
 
-  .grid,
+  .results-grid,
   .field-row {
     grid-template-columns: 1fr;
+  }
+
+  .result-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-meta {
+    text-align: left;
   }
 }
