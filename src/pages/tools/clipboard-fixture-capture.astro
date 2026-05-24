@@ -1,0 +1,87 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base
+  title="Clipboard Fixture Capture"
+  description="Zero-build browser tool for rich clipboard debugging. Capture browser-visible clipboard payloads from rendered chat and web surfaces, then open a prefilled GitHub issue."
+  currentNav="tools"
+>
+  <div class="page-fade">
+    <article class="article-shell">
+      <a class="back" href="/tools/">← Back to AI Tools</a>
+      <div class="a-meta">
+        <span>tool</span>
+        <span>clipboard</span>
+        <span>rich paste</span>
+      </div>
+      <h1>Clipboard Fixture Capture</h1>
+      <p class="a-lede">
+        Zero-build browser tool for rich clipboard debugging. Capture the real browser-visible payloads behind rendered answers from Claude, ChatGPT, GitHub, Notion, and similar sources, then open a prefilled GitHub issue with the full fixture packet copied to the clipboard.
+      </p>
+
+      <div class="a-mirrors">
+        <a class="pill solid" href="/tools/clipboard-capture/">Open the tool →</a>
+        <a class="pill" href="https://github.com/xronocode/mark/tree/main/tools/clipboard-capture" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="pill" href="https://github.com/xronocode/mark" target="_blank" rel="noopener">Mark ↗</a>
+      </div>
+
+      <div class="prose">
+        <p>
+          Rendered chat output is one of the messiest real-world inputs for Markdown editors.
+          The user copies something that looks correct in Claude or ChatGPT, pastes it into the editor,
+          and suddenly inline code, nested lists, code fences, or tables come back mangled.
+        </p>
+
+        <p>
+          This tool exists to stop debugging by screenshots and vague descriptions. Instead of asking someone
+          to “show what was in the clipboard”, you give them one static page: open the tool, paste the copied
+          content, inspect the payloads, then open a GitHub issue with the fixture already attached.
+        </p>
+
+        <h2>What it captures</h2>
+        <ul>
+          <li>Advertised clipboard MIME types</li>
+          <li><code>text/html</code></li>
+          <li><code>text/plain</code></li>
+          <li><code>text/markdown</code></li>
+          <li><code>text/x-markdown</code></li>
+          <li><code>text/rtf</code> and <code>application/rtf</code> when the browser exposes them</li>
+          <li>Custom string formats such as <code>vscode-editor-data</code></li>
+          <li>File and clipboard-item metadata</li>
+        </ul>
+
+        <h2>What it does not capture</h2>
+        <ul>
+          <li>Raw OS-native clipboard envelopes such as Windows <code>CF_HTML</code></li>
+          <li>App-private clipboard formats that browsers do not expose</li>
+          <li>Binary file bodies</li>
+        </ul>
+
+        <p>
+          That is intentional. For browser and webview paste bugs, the browser-visible payload is the first
+          layer that matters.
+        </p>
+
+        <h2>GitHub issue handoff</h2>
+        <p>
+          The tool is not only a viewer. After a capture, it can open a prefilled GitHub issue for
+          <code>owner/repo</code>, summarize the payload types and compact previews in the issue body,
+          and copy the full fixture packet to the clipboard for immediate paste into the issue.
+        </p>
+
+        <p>
+          That avoids browser URL-length limits while still giving maintainers a one-click reporting path.
+        </p>
+
+        <h2>Where we use it</h2>
+        <p>
+          Originally built for <a class="link" href="https://github.com/xronocode/mark" target="_blank" rel="noopener">Mark</a>,
+          specifically to debug Smart Paste fidelity from AI chats into a Markdown editor. It is also useful for
+          any workflow where browser clipboard structure matters: WYSIWYG Markdown editors, rich-text import
+          pipelines, browser-extension debugging, and cross-platform clipboard investigations.
+        </p>
+      </div>
+    </article>
+  </div>
+</Base>

@@ -159,14 +159,28 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'n
         </div>
       </div>
       <div class="card-grid cols-3">
-        {tools.slice(0, 3).map(t => (
-          <div class="card">
-            <div class="glyph">{t.data.glyph}</div>
-            <h4>{t.data.title}</h4>
-            <p>{t.data.description}</p>
-            <div class="tags">{t.data.tags.map(x => <span>#{x}</span>)}</div>
-          </div>
-        ))}
+        {tools.slice(0, 3).map((t) => {
+          const href = t.data.url;
+          const content = (
+            <>
+              <div class="glyph">{t.data.glyph}</div>
+              <h4>{t.data.title}</h4>
+              <p>{t.data.description}</p>
+              <div class="tags">{t.data.tags.map(x => <span>#{x}</span>)}</div>
+              {href && <div class="corner">open →</div>}
+            </>
+          );
+
+          return href ? (
+            <a href={href} class="card" style="text-decoration: none; color: inherit;">
+              {content}
+            </a>
+          ) : (
+            <div class="card">
+              {content}
+            </div>
+          );
+        })}
       </div>
 
       <!-- colophon -->
