@@ -8,6 +8,7 @@ const tools = await getCollection('tools');
 const pets = await getCollection('pets');
 
 const latest = posts[0];
+const hasEssay = (href?: string) => !!href && posts.some(p => `/blog/${p.id}/` === href);
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 ---
 
@@ -111,7 +112,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'n
               <p>{latest.data.description}</p>
               <div class="links">
                 <a class="link" href={`/blog/${latest.id}/`}>Read EN →</a>
-                {latest.data.mirrors.ru && <a class="link" href={latest.data.mirrors.ru}>RU mirror ↗</a>}
+                {hasEssay(latest.data.mirrors.ru) && <a class="link" href={latest.data.mirrors.ru}>RU mirror ↗</a>}
                 {latest.data.mirrors.habr && <a class="link" href={latest.data.mirrors.habr} target="_blank" rel="noopener">Habr ↗</a>}
               </div>
             </div>

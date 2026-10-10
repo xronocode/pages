@@ -1,0 +1,24 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1200px;height:630px;background:#f3ede1;color:#1a1814;font-family:"IBM Plex Sans",sans-serif;
+  padding:64px 72px;display:flex;flex-direction:column;position:relative;overflow:hidden}
+body::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(#0000 0 27px,#d8cfba66 27px 28px);pointer-events:none}
+.top{display:flex;align-items:center;gap:16px;font:500 22px "JetBrains Mono",monospace;letter-spacing:.02em;position:relative;z-index:1}
+.mark{width:40px;height:40px;background:#1a1814;color:#f3ede1;display:grid;place-items:center;font:500 24px "JetBrains Mono",monospace}
+.dim{color:#8a8472}
+.kicker{margin-top:72px;font:500 18px "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:#c4612f;position:relative;z-index:1}
+h1{margin-top:18px;font:500 64px/1.08 "Newsreader","Source Serif 4",serif;letter-spacing:-.01em;max-width:1000px;position:relative;z-index:1;
+  display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+h1.long{font-size:52px}
+.foot{position:absolute;left:72px;right:72px;bottom:56px;display:flex;justify-content:space-between;
+  font:400 20px "JetBrains Mono",monospace;color:#6b6557;z-index:1;border-top:2px solid #1a1814;padding-top:18px}
+</style></head>
+<body>
+  <div class="top"><span class="mark">x</span><span>xronocode <span class="dim">/ notebook</span></span></div>
+  <div class="kicker" id="kicker"></div>
+  <h1 id="title"></h1>
+  <div class="foot"><span id="meta"></span><span>pages.xronocode.com</span></div>
+</body></html>

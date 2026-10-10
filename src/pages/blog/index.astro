@@ -6,7 +6,7 @@ const posts = (await getCollection('blog')).filter(p => !p.id.endsWith('-ru')).s
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 ---
 
-<Base title="Essays" currentNav="blog">
+<Base title="Essays" description="Long-form essays on AI in banking, legacy migration, LLM economics, and agentic tooling — English originals with Russian mirrors." currentNav="blog">
   <div class="page-fade site-frame">
     <div class="hero">
       <div class="label">

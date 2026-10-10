@@ -645,6 +645,11 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   background: none;
   padding: 0;
 }
+/* Keep wide media and code inside the column (grid children default to min-width: auto). */
+.prose { min-width: 0; overflow-wrap: break-word; }
+.prose pre { max-width: 100%; }
+.prose img, .prose svg, .prose video { max-width: 100%; height: auto; }
+@media (max-width: 640px) { .prose table { display: block; max-width: 100%; overflow-x: auto; } }
 .prose .pull {
   font-family: var(--serif);
   font-size: 30px;

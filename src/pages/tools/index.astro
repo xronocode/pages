@@ -5,7 +5,7 @@ import { getCollection } from 'astro:content';
 const tools = await getCollection('tools');
 ---
 
-<Base title="AI Tools" currentNav="tools">
+<Base title="AI Tools" description="AI tools and agent skills I build and use: GRACE, smart-review, vision-sidecar, clipboard fixture capture." currentNav="tools">
   <div class="page-fade site-frame">
     <div class="hero" style="padding: var(--row) 0;">
       <div class="label"><div class="eyebrow">workshop · {tools.length.toString().padStart(2, '0')} tools</div></div>

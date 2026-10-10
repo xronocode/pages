@@ -1,19 +1,41 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { readingMinutes } from '../../site';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
-  return posts.map(post => ({ params: { id: post.id }, props: { post } }));
+  const paths = new Set(posts.map(p => `/blog/${p.id}/`));
+  // Drop mirror links that point at local essays which do not exist (yet).
+  const live = (href?: string) => (href && (!href.startsWith('/') || paths.has(href)) ? href : undefined);
+  return posts.map(post => ({
+    params: { id: post.id },
+    props: { post, mirrors: { ru: live(post.data.mirrors.ru), en: live(post.data.mirrors.en), habr: post.data.mirrors.habr } },
+  }));
 }
 
-const { post } = Astro.props;
+const { post, mirrors } = Astro.props;
 const { Content } = await render(post);
 const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 const isRu = post.id.endsWith('-ru');
+const minutes = readingMinutes(post.body);
+const self = `/blog/${post.id}/`;
+const alternates = (mirrors.ru || mirrors.en)
+  ? (isRu ? { ru: self, en: mirrors.en } : { en: self, ru: mirrors.ru })
+  : {};
 ---
 
-<Base title={post.data.title} currentNav="blog">
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  currentNav="blog"
+  lang={isRu ? 'ru' : 'en'}
+  type="article"
+  image={`/og/blog/${post.id}.png`}
+  date={post.data.date}
+  tags={post.data.tags}
+  alternates={alternates}
+>
   <div class="page-fade">
     <div class="article-shell">
       <a class="back" href="/blog/">← all essays</a>
@@ -23,7 +45,7 @@ const isRu = post.id.endsWith('-ru');
         <span>·</span>
         <span style="color: var(--accent);">{post.data.tags.join(' · ')}</span>
         <span>·</span>
-        <span>12 min read</span>
+        <span>{minutes} min read</span>
       </div>
       <h1>{post.data.title}</h1>
       <p class="a-lede">{post.data.description}</p>
@@ -31,15 +53,15 @@ const isRu = post.id.endsWith('-ru');
         {isRu ? (
           <>
             <span class="lozenge accent">RU — reading now</span>
-            {post.data.mirrors.en && <a class="lozenge" href={post.data.mirrors.en}>EN translation ↗</a>}
+            {mirrors.en && <a class="lozenge" href={mirrors.en}>EN translation ↗</a>}
           </>
         ) : (
           <>
             <span class="lozenge accent">EN — reading now</span>
-            {post.data.mirrors.ru && <a class="lozenge" href={post.data.mirrors.ru}>RU mirror ↗</a>}
+            {mirrors.ru && <a class="lozenge" href={mirrors.ru}>RU mirror ↗</a>}
           </>
         )}
-        {post.data.mirrors.habr && <a class="lozenge" href={post.data.mirrors.habr} target="_blank" rel="noopener">Habr original ↗</a>}
+        {mirrors.habr && <a class="lozenge" href={mirrors.habr} target="_blank" rel="noopener">Habr original ↗</a>}
       </div>
 
       <article class="prose">
