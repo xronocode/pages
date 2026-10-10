@@ -1,5 +1,6 @@
 ---
 title: "Your AI Cannot Edit Long Documents. Here Is Why — and How to Fix It"
+seoTitle: "Why AI Can't Edit Long Documents — and the Fix"
 description: "GRACE-DOCX: document maps, editing rules, and verification embedded into a Word file."
 date: 2026-04-07
 num: "05"

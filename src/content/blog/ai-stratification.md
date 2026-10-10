@@ -1,5 +1,6 @@
 ---
 title: "AI Stratification: Why Generative AI Did Not Spread Like Smartphones"
+seoTitle: "AI Stratification: Why GenAI Didn't Spread Like Phones"
 description: "Why generative AI is adopted differently from previous mass technologies."
 date: 2026-04-24
 num: "07"

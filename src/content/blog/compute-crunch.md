@@ -1,5 +1,6 @@
 ---
 title: "Compute Crunch Is Here: How to Calculate LLM Economics in 2026"
+seoTitle: "Compute Crunch: How to Calculate LLM Economics in 2026"
 description: "Build, buy, or hybrid: thinking about TCO. An invitation to discuss the framework, not an expert narrative with universal numbers."
 date: 2026-04-17
 num: "03"

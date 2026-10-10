@@ -5,6 +5,8 @@ export const SITE = {
   url: 'https://pages.xronocode.com',
   description: 'Notes & discussions on shipping AI into banking, ecosystems, documents, and autonomous agents.',
   ogImage: '/og/default.png',
+  jobTitle: 'CPO, fintech',
+  knowsAbout: ['AI in banking', 'fintech product management', 'digital ecosystems', 'AI agents', 'open source'],
   sameAs: [
     'https://github.com/xronocode',
     'https://linkedin.com/in/xronocode',

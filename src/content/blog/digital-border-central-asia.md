@@ -1,5 +1,6 @@
 ---
 title: "The Digital Border: How Central Asia Is Fighting Gray Smartphone Imports"
+seoTitle: "Central Asia's Digital Border vs Gray Smartphones"
 description: "IMEI registration systems in Uzbekistan, Kazakhstan, and Kyrgyzstan move border control inside the country — into mobile networks, customs data, and marketplace product cards."
 date: 2026-09-01
 num: "09"

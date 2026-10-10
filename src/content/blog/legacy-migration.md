@@ -1,5 +1,6 @@
 ---
 title: "\"Where Are the New Features?\" — How AI-Driven Legacy Migration Is Returning the IT Budget to Business"
+seoTitle: "AI Legacy Migration Returns the IT Budget to Business"
 description: "~75% of bank IT budgets go to legacy upkeep. In 2026, rewriting became cheaper than maintaining for the first time."
 date: 2026-05-23
 num: "08"

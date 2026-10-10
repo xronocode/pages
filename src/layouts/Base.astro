@@ -1,6 +1,8 @@
 ---
 interface Props {
   title: string;
+  // Full <title> override, used as-is (no site-name suffix).
+  seoTitle?: string;
   description?: string;
   currentNav?: string;
   lang?: 'en' | 'ru';
@@ -18,6 +20,7 @@ import { SITE, GA_ID } from '../site';
 
 const {
   title,
+  seoTitle,
   description = SITE.description,
   currentNav = '',
   lang = 'en',
@@ -30,7 +33,7 @@ const {
 
 const canonical = new URL(Astro.url.pathname, SITE.url).href;
 const imageUrl = new URL(image, SITE.url).href;
-const fullTitle = `${title} · ${SITE.name}`;
+const fullTitle = seoTitle ?? `${title} · ${SITE.name}`;
 const hreflangs = Object.entries(alternates).filter(([, href]) => href);
 const jsonld = type === 'article'
   ? {
@@ -48,11 +51,26 @@ const jsonld = type === 'article'
     }
   : {
       '@context': 'https://schema.org',
-      '@type': 'WebSite',
-      name: SITE.name,
-      url: SITE.url,
-      description: SITE.description,
-      author: { '@type': 'Person', name: SITE.author, sameAs: SITE.sameAs },
+      '@graph': [
+        {
+          '@type': 'WebSite',
+          '@id': `${SITE.url}/#website`,
+          name: SITE.name,
+          url: SITE.url,
+          description: SITE.description,
+          inLanguage: lang,
+          author: { '@id': `${SITE.url}/#person` },
+        },
+        {
+          '@type': 'Person',
+          '@id': `${SITE.url}/#person`,
+          name: SITE.author,
+          url: SITE.url,
+          jobTitle: SITE.jobTitle,
+          knowsAbout: SITE.knowsAbout,
+          sameAs: SITE.sameAs,
+        },
+      ],
     };
 const navItems = [
   { id: 'home', label: 'home', href: '/' },

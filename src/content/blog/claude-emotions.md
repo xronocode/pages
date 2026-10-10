@@ -1,5 +1,6 @@
 ---
 title: "171 Emotions, a Psychiatrist, and a Direct Link to Reward Hacking: Looking Inside Claude"
+seoTitle: "171 Emotions and Reward Hacking: Inside Claude"
 description: "A review of Anthropic's work on Claude's internal patterns and the risks of agentic systems."
 date: 2026-04-21
 num: "06"
