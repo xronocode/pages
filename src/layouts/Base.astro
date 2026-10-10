@@ -118,16 +118,8 @@ const navItems = [
   <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
 
   {GA_ID && (
-    <>
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-      <script is:inline define:vars={{ GA_ID }}>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', GA_ID);
-      </script>
-    </>
+    // Consent Mode v2: the cookie banner appears only for EEA/UK/CH visitors (public/consent.js).
+    <script is:inline src="/consent.js" data-ga={GA_ID} data-geo="https://avenex.xronocode.com/api/geo" data-privacy="/privacy/"></script>
   )}
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -189,6 +181,8 @@ const navItems = [
         <li><a href="https://github.com/xronocode" target="_blank" rel="noopener">GitHub ↗</a></li>
         <li><a href="https://linkedin.com/in/xronocode" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         <li><a href="https://habr.com/ru/users/Xronofag/" target="_blank" rel="noopener">Habr ↗</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="#cookie-settings">Cookie settings</a></li>
       </ul>
     </div>
     <div>

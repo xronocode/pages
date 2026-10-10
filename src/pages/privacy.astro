@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Privacy" description="What this site collects: anonymous visit statistics, with consent where the law requires it." currentNav="">
+  <div class="page-fade site-frame">
+    <div class="hero">
+      <div class="label"><div class="eyebrow">privacy</div></div>
+      <div>
+        <h1>Privacy</h1>
+        <p class="lede">This is a personal blog. There are no accounts, no forms and no comments here.</p>
+        <h2>Visit statistics</h2>
+        <p>The site uses Google Analytics 4 to see which pages are read and where visitors come from: pages viewed, referrer, rough location, device and browser type. Google processes that data under its own <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy policy</a>.</p>
+        <p>Visitors from the EEA, the UK and Switzerland are asked first: analytics cookies are set only after you accept them. Elsewhere analytics runs by default. You can change your choice at any time in <a href="#cookie-settings">Cookie settings</a>.</p>
+        <h2>Hosting</h2>
+        <p>The site is served by GitHub Pages behind Cloudflare; both see the technical data any web request carries, such as your IP address.</p>
+        <h2>Contact</h2>
+        <p>Questions about your data: <a href="https://github.com/xronocode" target="_blank" rel="noopener">github.com/xronocode</a>.</p>
+      </div>
+    </div>
+  </div>
+</Base>
+
+<style>
+  h2 { margin: 28px 0 8px; }
+  p { margin: 0 0 12px; max-width: 62ch; }
+  p a { text-decoration: underline; text-underline-offset: 3px; }
+</style>
