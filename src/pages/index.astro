@@ -165,7 +165,7 @@ const fmt = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', day: 'n
           const content = (
             <>
               <div class="glyph">{t.data.glyph}</div>
-              <h4>{t.data.title}</h4>
+              <h3>{t.data.title}</h3>
               <p>{t.data.description}</p>
               <div class="tags">{t.data.tags.map(x => <span>#{x}</span>)}</div>
               {href && <div class="corner">open →</div>}

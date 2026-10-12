@@ -7,15 +7,15 @@
   --ink: #1a1814;
   --ink-2: #2c2922;
   --ink-3: #6b6557;
-  --ink-4: #8a8472;
+  --ink-4: #706954;
   --rule: #d8cfba;
 
-  --accent: oklch(0.62 0.13 45);
+  --accent: #9c4824;
   --accent-soft: oklch(0.62 0.13 45 / 0.12);
 
-  --serif: "Newsreader", "Source Serif 4", Georgia, serif;
-  --sans: "IBM Plex Sans", "Söhne", -apple-system, sans-serif;
-  --mono: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "Söhne", -apple-system, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --content-w: 1180px;
   --gutter: 56px;
@@ -30,8 +30,9 @@
   --ink: #f0e9d8;
   --ink-2: #ddd5c1;
   --ink-3: #968f7e;
-  --ink-4: #6e695c;
+  --ink-4: #a59b86;
   --rule: #2a261f;
+  --accent: #e0946b;
   --accent-soft: oklch(0.62 0.13 45 / 0.18);
 }
 
@@ -513,7 +514,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   color: var(--accent);
   background: var(--paper);
 }
-.card h4 {
+.card h3, .card h4 {
   font-family: var(--serif);
   font-size: 22px;
   font-weight: 400;
@@ -772,7 +773,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 /* page transitions */
 .page-fade {
-  animation: pageFade 0.32s ease;
+  animation: none;
 }
 @keyframes pageFade {
   from { transform: translateY(6px); }
