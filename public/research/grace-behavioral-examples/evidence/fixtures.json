@@ -1,0 +1,466 @@
+{
+  "schemaVersion": "1.0.0",
+  "normalization": "See results.json normalization. These complete fixture input bytes are unchanged; snapshots resolve to deduplicated manifests and UTF-8 content blobs.",
+  "snapshots": {
+    "snapshots/09-01-valid-structure-broken-behavior.json": "c0e8011e6817ad6c59f2c0d98fd0a60940c5842ff3f24a07bf816ec7a0969f19",
+    "snapshots/10-02-direct-negative-behavior-control.json": "c0e8011e6817ad6c59f2c0d98fd0a60940c5842ff3f24a07bf816ec7a0969f19",
+    "snapshots/11-03-mustverify-runcommands-does-not-run-verification-command.json": "c0e8011e6817ad6c59f2c0d98fd0a60940c5842ff3f24a07bf816ec7a0969f19",
+    "snapshots/12-04-unknown-examples-contradictory-value-accepted.json": "8733714d668081bb3ce5882d5cc31ae604ce69989470d415209c738efa84632e",
+    "snapshots/13-05-unknown-examples-corrected-value-accepted.json": "f3e9fd290e981160179efe5201a8ee52a95588f904c49dedfa0354d1f7c3926a",
+    "snapshots/14-06-malformed-xml-control.json": "cce5739817e2a522c47f62219ff9ed134a9945c861ae2e2749dcdb50d9c8abf1",
+    "snapshots/15-07-duplicate-required-section-control.json": "040b9c490151f41d43dfd42d443b75f070b08fd5112e8ac2c375832cf2466380",
+    "snapshots/16-08-unexpected-companion-xml-rejected.json": "ea253350e17445789cabd575d4e420b54fbdfaecd112130a4c7c599a80bce30c",
+    "snapshots/17-09-recognized-design-companion-with-prose-examples.json": "22854cfcaf23d1acb63cbd5bfcf76ce3a2fc4d7a1f5a7943220523d16cd901de",
+    "snapshots/18-10-semantic-anchor-attribute-rejected.json": "8eaa36c8b67284ea9aab9efe9227f8681d68b2c3ee606fa954862f86810915ef",
+    "snapshots/19-11-semantic-anchor-in-ordinary-attribute-rejected.json": "c4425a013cb046f2211b0c447a37db73ae8f5fa6ddfdab9fa7a8431623a8d215",
+    "snapshots/20-12-semantic-anchor-as-child-accepted.json": "4fbd58974a09176e53e6b9c082901ef2f2e7c6b989407f2814f6604fa601940c",
+    "snapshots/21-13-mustverify-missing-record-control.json": "f650825e0aef0c3a64561dcc8079374c488b14a819e749d10d080cf2e53cb9f6",
+    "snapshots/22-14-command-without-opt-in-rejected.json": "5fd97e152e170d6576a1e89e97b7409a5f87b3b53eefc5ab90cc6a03fad1d725",
+    "snapshots/23-15-noop-command-passes-with-broken-behavior.json": "5fd97e152e170d6576a1e89e97b7409a5f87b3b53eefc5ab90cc6a03fad1d725",
+    "snapshots/24-16-behavioral-command-rejects-broken-boundary.json": "6992a44517b66ce0841683ae67ebb8216a69db0e30343aa36d10b5871a91c042",
+    "snapshots/25-17-same-behavioral-command-accepts-correct-boundary.json": "617669e49735faae3e71f0eee9a6d14474a0d03c7ca70377a60b73a537c08a52",
+    "snapshots/29-18-clean-tree-passing-run.json": "617669e49735faae3e71f0eee9a6d14474a0d03c7ca70377a60b73a537c08a52",
+    "snapshots/30-19-status-after-behavior-regression.json": "6992a44517b66ce0841683ae67ebb8216a69db0e30343aa36d10b5871a91c042",
+    "snapshots/31-20-prior-pass-does-not-satisfy-command-opt-in.json": "6992a44517b66ce0841683ae67ebb8216a69db0e30343aa36d10b5871a91c042",
+    "snapshots/32-21-rerun-rejects-regression-despite-prior-pass.json": "6992a44517b66ce0841683ae67ebb8216a69db0e30343aa36d10b5871a91c042",
+    "snapshots/33-22-dirty-content-version-a-passes.json": "fdb325362513df7330246d8a8d4a0ade7d3a956617cd4e6b7c48aeee1dded608",
+    "snapshots/34-23-dirty-content-version-b-passes.json": "18d82f693af82ba2e45ae0587a1549efd1cd51897c1cc095b869d023658a433b",
+    "snapshots/38-25-source-mutating-command-starts-clean-and-passes.json": "1302dbdd10076b38cdd0cab179c090eac91ac710aca0407f495d08f697f4ef8f",
+    "snapshots/40-27-post-run-behavior-control-fails.json": "3d5489aa735fc4c2bc21a195cec4aa729c531d3ef73d151a521d9adda13b89e8"
+  },
+  "manifests": {
+    "c0e8011e6817ad6c59f2c0d98fd0a60940c5842ff3f24a07bf816ec7a0969f19": {
+      "rawFixtureSha256": "473ae22d426a5ffd70bfcfd1f92d52093f4096ba3195e4547b2b69a58013cb82",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "8733714d668081bb3ce5882d5cc31ae604ce69989470d415209c738efa84632e": {
+      "rawFixtureSha256": "bd1672863b868e978b0b050ec3d827941df18cf1302e3ba4e11ad96e01e49cd9",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "fd8c272e671b523316f4fd17477899b162f27b0b4a65ad50531e30afcc861a3b",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "f3e9fd290e981160179efe5201a8ee52a95588f904c49dedfa0354d1f7c3926a": {
+      "rawFixtureSha256": "fd2136506cd54c3c49493fce18400f059bc3f47f8571447f149ba6d0f2d741fe",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "6d4ac19d5fc80f22ac93d03f07cbf5c03e32a4660cbe7d680864501acb0be78f",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "cce5739817e2a522c47f62219ff9ed134a9945c861ae2e2749dcdb50d9c8abf1": {
+      "rawFixtureSha256": "ec52bec8852cfd17f08f3bd6fe7694c0fd1fdad1539d9e16bd8c51e8e64c3f8f",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "3679a5829acabf3a063699f9f82ec0c4551569f4ba7f4f3823b8b5c479289c83",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "040b9c490151f41d43dfd42d443b75f070b08fd5112e8ac2c375832cf2466380": {
+      "rawFixtureSha256": "7577421de2cc58fe7afb108c1b07bc7eabc66728909bd62969d4b82c5509329e",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "ddd911c860e82a244bc3888c347a5a3af1b9150dac72ee679ea2ebc54e151505",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "ea253350e17445789cabd575d4e420b54fbdfaecd112130a4c7c599a80bce30c": {
+      "rawFixtureSha256": "74442ded3078bc1da5b290e622bce493449ee08cb1dc6e9607f10c0c715ceadd",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/examples.xml": "3823e8ed34d171a6aca788ddfb627de9fb40592a1dfd90128f2f70ed494c264c",
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "22854cfcaf23d1acb63cbd5bfcf76ce3a2fc4d7a1f5a7943220523d16cd901de": {
+      "rawFixtureSha256": "326f407add49a5abc90315b2a3cd29ffb13c1c11c9f55f5175e4c99f6deaf8f4",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/design-context.xml": "40e25fcabbf27fe61dc04b9e4af453d1ef8ecd0eb51ab2143341288a0cf673a2",
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "8eaa36c8b67284ea9aab9efe9227f8681d68b2c3ee606fa954862f86810915ef": {
+      "rawFixtureSha256": "5e3c238777911df48d71f8ab38674e847cfc2eca65c98c406a35459a82144809",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "91cccb48b46d4dbd34f90770797849b1b9de91a145b72bba362a8a246d03e376",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "c4425a013cb046f2211b0c447a37db73ae8f5fa6ddfdab9fa7a8431623a8d215": {
+      "rawFixtureSha256": "2fe89813887aaa3838a1293b6dc0b549a6a6612ac67192b2c0f972a81a6387e7",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "ee2b3db66cada281ea44ee65ec47bae49885ae349a9ab9d19601c216ea6e2c84",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "4fbd58974a09176e53e6b9c082901ef2f2e7c6b989407f2814f6604fa601940c": {
+      "rawFixtureSha256": "e6a79698b7c22f25f7fd185d33342745fc79d1a92512e99743e23e6613e2779c",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "c609b53952472f85d474c6843440537a74af2afcf46e5e85739974a6ef734c74",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "f650825e0aef0c3a64561dcc8079374c488b14a819e749d10d080cf2e53cb9f6": {
+      "rawFixtureSha256": "2995555cea861fb517b0fb70fb22f354349fc2c569516ee7ad4df955e7450a2f",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "f3a60f8c7954dac507d47830d93ca1c9be2bed87845e1dda8f99c1c5d777beff",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "c609b53952472f85d474c6843440537a74af2afcf46e5e85739974a6ef734c74",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "5fd97e152e170d6576a1e89e97b7409a5f87b3b53eefc5ab90cc6a03fad1d725": {
+      "rawFixtureSha256": "4d4ea01f889dba4feafa8bd5f6f33eedbceb547a0c4135757e79e3a8a7aee9b7",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "c3c5fc1eb2d50faa9f6b38c23b14bf7fddc1550df1f7fdc86a7995b5d03e0a96",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "6992a44517b66ce0841683ae67ebb8216a69db0e30343aa36d10b5871a91c042": {
+      "rawFixtureSha256": "4f3cfc474eafc2f61ece5f0e335fb1c48295e9422faad3e8002b5a84b0cd2235",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "1df3a216c88094a16fbda75a06c9801c368638011b516caa16c63b50f3f953bb",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    },
+    "617669e49735faae3e71f0eee9a6d14474a0d03c7ca70377a60b73a537c08a52": {
+      "rawFixtureSha256": "6ac03aab9eac56f9e7827c4bfa962f78707232c9e19dab75917d527c1e975d14",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "1df3a216c88094a16fbda75a06c9801c368638011b516caa16c63b50f3f953bb",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "80dfe533e7048fc35e6f3d146be53e08d53d45e05858843c6cb7cda594d98d54"
+      }
+    },
+    "fdb325362513df7330246d8a8d4a0ade7d3a956617cd4e6b7c48aeee1dded608": {
+      "rawFixtureSha256": "10fb436d9a111c0bf73fba57aeab7960b82b452031415fe555e41223ebebbf25",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "1df3a216c88094a16fbda75a06c9801c368638011b516caa16c63b50f3f953bb",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "a3490d81fb28316d1870e9afa2ee59b2b9164c19b5800e449e66fb4443cf4abd"
+      }
+    },
+    "18d82f693af82ba2e45ae0587a1549efd1cd51897c1cc095b869d023658a433b": {
+      "rawFixtureSha256": "0d937178540ad568805cf1dd5d1eaa0ef9c5013233e203a83bf6956f317a581e",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "1df3a216c88094a16fbda75a06c9801c368638011b516caa16c63b50f3f953bb",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ae084b859df23fbcf61219c89d799a0c1d7682d7dfde1a3ba14996812d0d02c1"
+      }
+    },
+    "1302dbdd10076b38cdd0cab179c090eac91ac710aca0407f495d08f697f4ef8f": {
+      "rawFixtureSha256": "bff3368dc34c3ac0e685e7e78d2b8667b918a286e1a76b806e30e0b55e6d281f",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "0fad3fac897e7ccfee9f9bcf87fba1d2c4d3f34451c095f483837de4bf3bfa2d",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/mutate-after-check.ts": "8d077466a55fa3225fdf49cffda4e1c7a4b9c2d2b225474513ad7b87475e63cf",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "80dfe533e7048fc35e6f3d146be53e08d53d45e05858843c6cb7cda594d98d54"
+      }
+    },
+    "3d5489aa735fc4c2bc21a195cec4aa729c531d3ef73d151a521d9adda13b89e8": {
+      "rawFixtureSha256": "7a2ca21975f95c07b39635746343d88d3e47a7e4687f5da52e63ff42374a730a",
+      "emptyDirectories": [
+        ".grace/changes/archive"
+      ],
+      "files": {
+        ".grace/changes/active/C-REORDER-BOUNDARY/plan.xml": "0fad3fac897e7ccfee9f9bcf87fba1d2c4d3f34451c095f483837de4bf3bfa2d",
+        ".grace/changes/active/C-REORDER-BOUNDARY/spec.xml": "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99",
+        ".grace/context/deployment.xml": "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d",
+        ".grace/context/principles.xml": "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5",
+        ".grace/context/requirements.xml": "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c",
+        ".grace/context/technology.xml": "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4",
+        ".grace/context/ux-guidelines.xml": "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966",
+        ".grace/graph/index.xml": "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994",
+        ".grace/graph/inventory.xml": "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c",
+        ".grace/verification/index.xml": "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba",
+        ".grace/verification/inventory.xml": "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce",
+        "checks/mutate-after-check.ts": "8d077466a55fa3225fdf49cffda4e1c7a4b9c2d2b225474513ad7b87475e63cf",
+        "checks/noop.ts": "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1",
+        "checks/reorder.test.ts": "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f",
+        "src/inventory.ts": "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d"
+      }
+    }
+  },
+  "blobs": {
+    "d58c7b2a9eef17974053955017fc4706c2875cf174442a9b21487c0ae4374b87": "<GraceChangePlan graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<IntentSummary>Enforce the reorder boundary.</IntentSummary>\n<BaselineAssertions><MustExist><Value>M-INVENTORY</Value></MustExist></BaselineAssertions>\n<TargetAssertions><MustVerify><Module>M-INVENTORY</Module></MustVerify></TargetAssertions>\n<DurableScope><GraphAnchors><M-INVENTORY /></GraphAnchors></DurableScope>\n<ObservedWriteScope><File>src/inventory.ts</File></ObservedWriteScope>\n<ImplementationPlan><T-001><Title>Check the boundary</Title><DependsOn></DependsOn><AcceptanceCriteria><Criterion>Equality never triggers a reorder.</Criterion></AcceptanceCriteria><Verification><Command>bun test checks/reorder.test.ts</Command></Verification></T-001></ImplementationPlan>\n</C-REORDER-BOUNDARY></GraceChangePlan>\n",
+    "1563ff5676fe6c85e82969289b1d50747d0f3377f4672e8bc974d4466ae8dd99": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "134af619f92bfa1b34929595d53d23a8251aa38c8959882fd90afed8b415ee6d": "<GraceDeployment graceVersion=\"4.0\"><Applicability>not-applicable</Applicability><Reason>This isolated local research fixture is never deployed.</Reason></GraceDeployment>\n",
+    "f042dfd23e8c673ce0e9542cf369299d35df58c85dea62d4f59dbb7c7293c1e5": "<GracePrinciples graceVersion=\"4.0\"><Principle>Preserve exact boundary semantics.</Principle></GracePrinciples>\n",
+    "d283efea542d86e8de892646f13ba021303327fdd471ab2ae5364f53ed67777c": "<GraceRequirements graceVersion=\"4.0\"><Summary>Reorder when stock is strictly below threshold.</Summary></GraceRequirements>\n",
+    "067eabfb880dbcac941ef8d13c72d4af3700d744bd3d4376b29eb3f4b0f4d4a4": "<GraceTechnology graceVersion=\"4.0\"><Runtime>Bun</Runtime></GraceTechnology>\n",
+    "387e18bbc25bc4d699b3b42e0d58b6319896d5c6b3028f5906376cad5d4ef966": "<GraceUXGuidelines graceVersion=\"4.0\"><Applicability>not-applicable</Applicability><Reason>The fixture exposes only a function and automated tests.</Reason></GraceUXGuidelines>\n",
+    "66a07db31b7aa6ca439769ae6aaaf7b685a503a1ae190911fb86bf2547030994": "<GraceGraphIndex graceVersion=\"4.0\"><GraphDocuments><GD-INVENTORY><Path>graph/inventory.xml</Path><Owns><M-INVENTORY /></Owns></GD-INVENTORY></GraphDocuments></GraceGraphIndex>\n",
+    "9a74795dc6be191df495ea7ccdb52798c4e62445f73295dd0a1ad8777b79565c": "<GraceGraphDocument graceVersion=\"4.0\"><GD-INVENTORY><M-INVENTORY><Summary>Inventory reorder predicate.</Summary><Path>src/inventory.ts</Path></M-INVENTORY></GD-INVENTORY></GraceGraphDocument>\n",
+    "b013611d0eac42a65357b96e247e107ffa1ccd4f1574af9a630880385d3475ba": "<GraceVerificationIndex graceVersion=\"4.0\"><VerificationDocuments><VD-INVENTORY><Path>verification/inventory.xml</Path><Owns><V-M-INVENTORY /></Owns></VD-INVENTORY></VerificationDocuments></GraceVerificationIndex>\n",
+    "04491bbe2c1b3e321286c453795818305aea1520da22cc9297d288f2b10778ce": "<GraceVerificationDocument graceVersion=\"4.0\"><VD-INVENTORY><V-M-INVENTORY><Command>bun test checks/reorder.test.ts</Command><Scenario>Equality must not trigger replenishment.</Scenario><Marker>[Inventory][needsReorder][BLOCK_COMPARE]</Marker></V-M-INVENTORY></VD-INVENTORY></GraceVerificationDocument>\n",
+    "d445dbdb310d2f8e7e6e50913d9599f3ddaeb38918ecd28cea955fa01d1d92e1": "console.log(\"NOOP_ONLY: no inventory function was imported or called\");\n",
+    "0d347603b92cf69141629d74fc13eff3091c5647e1d4b8288035e9a4b0b96d4f": "import { expect, test } from \"bun:test\";\nimport { needsReorder } from \"../src/inventory\";\ntest(\"equality keeps current inventory\", () => expect(needsReorder(12, 12)).toBe(false));\ntest(\"a shortage triggers reorder\", () => expect(needsReorder(11, 12)).toBe(true));\ntest(\"excess stock does not reorder\", () => expect(needsReorder(13, 12)).toBe(false));\n",
+    "ba08efcf39976c49105b92c0e5da5469a0006d1055f44b266ff7f6b7900ced5d": "// START_MODULE_CONTRACT\n//   PURPOSE: Decide when an inventory item needs replenishment.\n//   SCOPE: A finite integer quantity and reorder threshold.\n//   DEPENDS: none\n//   LINKS: M-INVENTORY\n//   ROLE: RUNTIME\n//   MAP_MODE: EXPORTS\n// END_MODULE_CONTRACT\n// START_MODULE_MAP\n//   needsReorder - Return true only when quantity is below threshold.\n// END_MODULE_MAP\nexport function needsReorder(quantity: number, threshold: number): boolean {\n  console.info(\"[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\");\n  // START_BLOCK_COMPARE\n  return quantity <= threshold;\n  // END_BLOCK_COMPARE\n}\n",
+    "fd8c272e671b523316f4fd17477899b162f27b0b4a65ad50531e30afcc861a3b": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n<Examples><Example label=\"boundary\" expected=\"true\"><Input>12, 12</Input><Expected>true</Expected><Claim>This intentionally contradicts AcceptanceCriteria.</Claim></Example></Examples>\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "6d4ac19d5fc80f22ac93d03f07cbf5c03e32a4660cbe7d680864501acb0be78f": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n<Examples><Example><Input>12, 12</Input><Expected>false</Expected></Example></Examples>\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "3679a5829acabf3a063699f9f82ec0c4551569f4ba7f4f3823b8b5c479289c83": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n<Examples><Example></Examples>\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "ddd911c860e82a244bc3888c347a5a3af1b9150dac72ee679ea2ebc54e151505": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n<Goals><Goal>Duplicate required section.</Goal></Goals>\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "3823e8ed34d171a6aca788ddfb627de9fb40592a1dfd90128f2f70ed494c264c": "<GraceBehaviorExamples graceVersion=\"4.0\"><Example><Input>12,12</Input><Expected>false</Expected></Example></GraceBehaviorExamples>\n",
+    "40e25fcabbf27fe61dc04b9e4af453d1ef8ecd0eb51ab2143341288a0cf673a2": "<GraceChangeDesignContext graceVersion=\"4.0\"><Change>C-REORDER-BOUNDARY</Change><Examples><Example><Input>12,12</Input><Expected>false</Expected></Example></Examples></GraceChangeDesignContext>\n",
+    "91cccb48b46d4dbd34f90770797849b1b9de91a145b72bba362a8a246d03e376": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY type=\"runtime\" /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "ee2b3db66cada281ea44ee65ec47bae49885ae349a9ab9d19601c216ea6e2c84": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n<Examples><Example module=\"M-INVENTORY\"><Expected>false</Expected></Example></Examples>\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "c609b53952472f85d474c6843440537a74af2afcf46e5e85739974a6ef734c74": "<GraceChangeSpec graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<Summary>Clarify the reorder boundary.</Summary>\n<Goals><Goal>Reorder only below the configured threshold.</Goal></Goals>\n<Constraints><Constraint>Retain the public boolean function.</Constraint></Constraints>\n<NonGoals><NonGoal>Supplier ordering and stock persistence.</NonGoal></NonGoals>\n<AcceptanceCriteria><Criterion>Quantity 12 with threshold 12 returns false.</Criterion></AcceptanceCriteria>\n<AffectedAreas><M-INVENTORY /></AffectedAreas>\n<VerificationIntent><ExpectedCommand>bun test checks/reorder.test.ts</ExpectedCommand><ExpectedEvidence>The boundary test passes.</ExpectedEvidence></VerificationIntent>\n<Examples><Example label=\"boundary\"><M-INVENTORY /><Expected>false</Expected></Example></Examples>\n</C-REORDER-BOUNDARY></GraceChangeSpec>\n",
+    "f3a60f8c7954dac507d47830d93ca1c9be2bed87845e1dda8f99c1c5d777beff": "<GraceChangePlan graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<IntentSummary>Enforce the reorder boundary.</IntentSummary>\n<BaselineAssertions><MustExist><Value>M-INVENTORY</Value></MustExist></BaselineAssertions>\n<TargetAssertions><MustVerify><Module>M-ABSENT</Module></MustVerify></TargetAssertions>\n<DurableScope><GraphAnchors><M-INVENTORY /></GraphAnchors></DurableScope>\n<ObservedWriteScope><File>src/inventory.ts</File></ObservedWriteScope>\n<ImplementationPlan><T-001><Title>Check the boundary</Title><DependsOn></DependsOn><AcceptanceCriteria><Criterion>Equality never triggers a reorder.</Criterion></AcceptanceCriteria><Verification><Command>bun test checks/reorder.test.ts</Command></Verification></T-001></ImplementationPlan>\n</C-REORDER-BOUNDARY></GraceChangePlan>\n",
+    "c3c5fc1eb2d50faa9f6b38c23b14bf7fddc1550df1f7fdc86a7995b5d03e0a96": "<GraceChangePlan graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<IntentSummary>Enforce the reorder boundary.</IntentSummary>\n<BaselineAssertions><MustExist><Value>M-INVENTORY</Value></MustExist></BaselineAssertions>\n<TargetAssertions><MustVerify><Module>M-INVENTORY</Module></MustVerify><MustPassCommand><Command>bun run checks/noop.ts</Command></MustPassCommand></TargetAssertions>\n<DurableScope><GraphAnchors><M-INVENTORY /></GraphAnchors></DurableScope>\n<ObservedWriteScope><File>src/inventory.ts</File></ObservedWriteScope>\n<ImplementationPlan><T-001><Title>Check the boundary</Title><DependsOn></DependsOn><AcceptanceCriteria><Criterion>Equality never triggers a reorder.</Criterion></AcceptanceCriteria><Verification><Command>bun test checks/reorder.test.ts</Command></Verification></T-001></ImplementationPlan>\n</C-REORDER-BOUNDARY></GraceChangePlan>\n",
+    "1df3a216c88094a16fbda75a06c9801c368638011b516caa16c63b50f3f953bb": "<GraceChangePlan graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<IntentSummary>Enforce the reorder boundary.</IntentSummary>\n<BaselineAssertions><MustExist><Value>M-INVENTORY</Value></MustExist></BaselineAssertions>\n<TargetAssertions><MustVerify><Module>M-INVENTORY</Module></MustVerify><MustPassCommand><Command>bun test checks/reorder.test.ts</Command></MustPassCommand></TargetAssertions>\n<DurableScope><GraphAnchors><M-INVENTORY /></GraphAnchors></DurableScope>\n<ObservedWriteScope><File>src/inventory.ts</File></ObservedWriteScope>\n<ImplementationPlan><T-001><Title>Check the boundary</Title><DependsOn></DependsOn><AcceptanceCriteria><Criterion>Equality never triggers a reorder.</Criterion></AcceptanceCriteria><Verification><Command>bun test checks/reorder.test.ts</Command></Verification></T-001></ImplementationPlan>\n</C-REORDER-BOUNDARY></GraceChangePlan>\n",
+    "80dfe533e7048fc35e6f3d146be53e08d53d45e05858843c6cb7cda594d98d54": "// START_MODULE_CONTRACT\n//   PURPOSE: Decide when an inventory item needs replenishment.\n//   SCOPE: A finite integer quantity and reorder threshold.\n//   DEPENDS: none\n//   LINKS: M-INVENTORY\n//   ROLE: RUNTIME\n//   MAP_MODE: EXPORTS\n// END_MODULE_CONTRACT\n// START_MODULE_MAP\n//   needsReorder - Return true only when quantity is below threshold.\n// END_MODULE_MAP\nexport function needsReorder(quantity: number, threshold: number): boolean {\n  console.info(\"[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\");\n  // START_BLOCK_COMPARE\n  return quantity < threshold;\n  // END_BLOCK_COMPARE\n}\n",
+    "a3490d81fb28316d1870e9afa2ee59b2b9164c19b5800e449e66fb4443cf4abd": "// START_MODULE_CONTRACT\n//   PURPOSE: Decide when an inventory item needs replenishment.\n//   SCOPE: A finite integer quantity and reorder threshold.\n//   DEPENDS: none\n//   LINKS: M-INVENTORY\n//   ROLE: RUNTIME\n//   MAP_MODE: EXPORTS\n// END_MODULE_CONTRACT\n// START_MODULE_MAP\n//   needsReorder - Return true only when quantity is below threshold.\n// END_MODULE_MAP\nexport function needsReorder(quantity: number, threshold: number): boolean {\n  console.info(\"[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\");\n  // START_BLOCK_COMPARE\n  return quantity < threshold;\n  // END_BLOCK_COMPARE\n}\n// Dirty content version A\n",
+    "ae084b859df23fbcf61219c89d799a0c1d7682d7dfde1a3ba14996812d0d02c1": "// START_MODULE_CONTRACT\n//   PURPOSE: Decide when an inventory item needs replenishment.\n//   SCOPE: A finite integer quantity and reorder threshold.\n//   DEPENDS: none\n//   LINKS: M-INVENTORY\n//   ROLE: RUNTIME\n//   MAP_MODE: EXPORTS\n// END_MODULE_CONTRACT\n// START_MODULE_MAP\n//   needsReorder - Return true only when quantity is below threshold.\n// END_MODULE_MAP\nexport function needsReorder(quantity: number, threshold: number): boolean {\n  console.info(\"[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\");\n  // START_BLOCK_COMPARE\n  return quantity < threshold;\n  // END_BLOCK_COMPARE\n}\n// Dirty content version B\n",
+    "0fad3fac897e7ccfee9f9bcf87fba1d2c4d3f34451c095f483837de4bf3bfa2d": "<GraceChangePlan graceVersion=\"4.0\" status=\"approved\"><C-REORDER-BOUNDARY>\n<IntentSummary>Enforce the reorder boundary.</IntentSummary>\n<BaselineAssertions><MustExist><Value>M-INVENTORY</Value></MustExist></BaselineAssertions>\n<TargetAssertions><MustVerify><Module>M-INVENTORY</Module></MustVerify><MustPassCommand><Command>bun run checks/mutate-after-check.ts</Command></MustPassCommand></TargetAssertions>\n<DurableScope><GraphAnchors><M-INVENTORY /></GraphAnchors></DurableScope>\n<ObservedWriteScope><File>src/inventory.ts</File></ObservedWriteScope>\n<ImplementationPlan><T-001><Title>Check the boundary</Title><DependsOn></DependsOn><AcceptanceCriteria><Criterion>Equality never triggers a reorder.</Criterion></AcceptanceCriteria><Verification><Command>bun test checks/reorder.test.ts</Command></Verification></T-001></ImplementationPlan>\n</C-REORDER-BOUNDARY></GraceChangePlan>\n",
+    "8d077466a55fa3225fdf49cffda4e1c7a4b9c2d2b225474513ad7b87475e63cf": "import { needsReorder } from \"../src/inventory\";\nif (needsReorder(12, 12) !== false) throw new Error(\"Initial boundary was wrong\");\nconst file = Bun.file(\"src/inventory.ts\");\nawait Bun.write(file, (await file.text()).replace(\"quantity < threshold\", \"quantity <= threshold\"));\nconsole.log(\"Boundary checked, then source deliberately changed before command exit\");\n"
+  }
+}

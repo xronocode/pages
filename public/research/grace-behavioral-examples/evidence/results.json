@@ -1,0 +1,1541 @@
+{
+  "schemaVersion": "1.0.0",
+  "normalization": {
+    "purpose": "Research observations, not product certification or a typed-case implementation.",
+    "placeholders": {
+      "<REPO>": "Canonical checkout root used for the experiment.",
+      "<RUN_DIR>": "Canonical raw evidence root, including fixture projects and isolated cache.",
+      "<BUN>": "Bun executable recorded by the experiment.",
+      "<HOME>": "The exporter's home directory, if present in captured text."
+    },
+    "transformations": [
+      "Only known machine paths are replaced in argv, cwd, output, observation metadata, and native logs; all other output text and all exit codes are retained.",
+      "Inherited PATH is omitted. Remaining identical environment overrides are recorded once in metadata, rather than repeated for every subprocess.",
+      "Fixture file contents are not normalized: publication fails if that would be necessary. Identical content and identical manifests are deduplicated.",
+      "Timestamps, process IDs, durations, Git identities, runtime versions, content hashes, and positive/negative outcomes are preserved from the run."
+    ],
+    "fixtureHashDefinition": "A blob key is SHA-256 of the original UTF-8 file text. A rawFixtureSha256 is SHA-256 of JSON.stringify of the ordered relative-path-to-text object before the command. Manifest files retain that insertion order, so reconstructing the object from blobs reproduces the recorded hash.",
+    "manifestHashDefinition": "A manifest key is SHA-256 of JSON.stringify({rawFixtureSha256, emptyDirectories, files}), where files maps project-relative paths to blob keys in original order. Recreate the recorded empty directories as well as parent directories for files. Git internals are excluded; the recorded Git commands recreate the fixture history.",
+    "observationHashScope": "Source file hashes in observations (including probe 24) remain hashes of the original exact bytes; paths are not included in those hashes.",
+    "pathAudit": "Export rejects remaining known private roots and common Unix/Windows user or temporary directory paths. Inspect before publishing on another environment."
+  },
+  "metadata": {
+    "sourceCommitExpected": "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+    "evaluatedCodeBaseCommit": "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+    "evaluatedSourcePaths": [
+      "src/",
+      "package.json",
+      "bun.lock"
+    ],
+    "recordedAt": "2026-10-26T15:41:24.406Z",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "bun": "1.3.14",
+    "bunExecutable": "<BUN>",
+    "nodeCompatibility": "24.3.0",
+    "subprocessTimeoutMs": 45000,
+    "timeoutScope": "Direct subprocess; no cross-platform descendant-process termination guarantee. A timeout stops the suite.",
+    "environmentOverrides": {
+      "XDG_CACHE_HOME": "<RUN_DIR>/cache",
+      "TMPDIR": "<RUN_DIR>/tmp",
+      "NO_COLOR": "1",
+      "GIT_AUTHOR_NAME": "Independent GRACE Probe",
+      "GIT_AUTHOR_EMAIL": "grace-probe@example.invalid",
+      "GIT_COMMITTER_NAME": "Independent GRACE Probe",
+      "GIT_COMMITTER_EMAIL": "grace-probe@example.invalid",
+      "SHELL": "/bin/sh"
+    },
+    "repo": "<REPO>",
+    "outputDirectory": "<RUN_DIR>",
+    "sourceCommitActual": "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+    "sourceMatchesBase": true,
+    "sourceWorkingTree": " M README.md\n?? docs/\n",
+    "gitVersion": "git version 2.54.0 (Apple Git-157)",
+    "packageVersion": "4.2.1",
+    "lockfileSha256": "cac6efbcb33b91e3242f204bab86ba8bac08f4b37b51ca29f3128a3285719b71",
+    "cliVersion": "4.2.1",
+    "completedAt": "2026-10-26T15:41:31.158Z",
+    "assertionSuite": "passed",
+    "commandCount": 42,
+    "observationCount": 26
+  },
+  "outcomes": [
+    {
+      "label": "01-valid-structure-broken-behavior",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "02-direct-negative-behavior-control",
+      "exitCode": 1,
+      "observation": "The independent boundary oracle fails while valid structural lint passes."
+    },
+    {
+      "label": "03-mustverify-runcommands-does-not-run-verification-command",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "04-unknown-examples-contradictory-value-accepted",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "05-unknown-examples-corrected-value-accepted",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "06-malformed-xml-control",
+      "exitCode": 1,
+      "issueCodes": [
+        "assertion.change-not-approved",
+        "change.plan-requires-approved-spec",
+        "xml.parse"
+      ]
+    },
+    {
+      "label": "07-duplicate-required-section-control",
+      "exitCode": 1,
+      "issueCodes": [
+        "change.spec-duplicate-section"
+      ]
+    },
+    {
+      "label": "08-unexpected-companion-xml-rejected",
+      "exitCode": 1,
+      "issueCodes": [
+        "change.unexpected-file"
+      ]
+    },
+    {
+      "label": "09-recognized-design-companion-with-prose-examples",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "10-semantic-anchor-attribute-rejected",
+      "exitCode": 1,
+      "issueCodes": [
+        "artifact.semantic-anchor-has-attributes"
+      ]
+    },
+    {
+      "label": "11-semantic-anchor-in-ordinary-attribute-rejected",
+      "exitCode": 1,
+      "issueCodes": [
+        "artifact.semantic-anchor-attribute"
+      ]
+    },
+    {
+      "label": "12-semantic-anchor-as-child-accepted",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "13-mustverify-missing-record-control",
+      "exitCode": 1,
+      "issueCodes": [
+        "assertion.MustVerify"
+      ]
+    },
+    {
+      "label": "14-command-without-opt-in-rejected",
+      "exitCode": 1,
+      "issueCodes": [
+        "assertion.command-not-evaluated"
+      ]
+    },
+    {
+      "label": "15-noop-command-passes-with-broken-behavior",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "16-behavioral-command-rejects-broken-boundary",
+      "exitCode": 1,
+      "issueCodes": [
+        "assertion.MustPassCommand"
+      ]
+    },
+    {
+      "label": "17-same-behavioral-command-accepts-correct-boundary",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "18-clean-tree-passing-run",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "19-status-after-behavior-regression",
+      "exitCode": 0,
+      "observation": "Status records scoped source drift but does not rerun the behavioral target or validate prior evidence freshness.",
+      "observedDrift": {
+        "available": true,
+        "changedFiles": [
+          "src/inventory.ts"
+        ],
+        "explainedFiles": [
+          "src/inventory.ts"
+        ],
+        "unexplainedFiles": []
+      },
+      "derivedStates": [
+        "explained-observed-drift",
+        "ready-to-execute"
+      ],
+      "changes": [
+        {
+          "changeId": "C-REORDER-BOUNDARY",
+          "location": "active",
+          "specStatus": "approved",
+          "planStatus": "approved",
+          "derivedStates": [
+            "ready-to-execute"
+          ],
+          "path": ".grace/changes/active/C-REORDER-BOUNDARY"
+        }
+      ]
+    },
+    {
+      "label": "20-prior-pass-does-not-satisfy-command-opt-in",
+      "exitCode": 1,
+      "issueCodes": [
+        "assertion.command-not-evaluated"
+      ]
+    },
+    {
+      "label": "21-rerun-rejects-regression-despite-prior-pass",
+      "exitCode": 1,
+      "issueCodes": [
+        "assertion.MustPassCommand"
+      ]
+    },
+    {
+      "label": "22-dirty-content-version-a-passes",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "23-dirty-content-version-b-passes",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "24-two-distinct-dirty-trees-share-vcs-identity",
+      "hashes": [
+        "a3490d81fb28316d1870e9afa2ee59b2b9164c19b5800e449e66fb4443cf4abd",
+        "ae084b859df23fbcf61219c89d799a0c1d7682d7dfde1a3ba14996812d0d02c1"
+      ],
+      "vcsIdentity": {
+        "head": "1ab68ab85b3ad23e7b81d2f2afa77c199c4a4be2",
+        "branch": "probe",
+        "dirty": true
+      },
+      "metadataKeys": [
+        "schemaVersion",
+        "tool",
+        "changeId",
+        "assertionMode",
+        "projectRoot",
+        "slug",
+        "pid",
+        "head",
+        "branch",
+        "dirty",
+        "startedAt",
+        "finishedAt",
+        "status",
+        "commands"
+      ],
+      "observation": "Different comment bytes yield different source hashes while executable behavior stays identical; HEAD + branch + dirty flag does not identify exact uncommitted bytes."
+    },
+    {
+      "label": "25-source-mutating-command-starts-clean-and-passes",
+      "exitCode": 0,
+      "issueCodes": [],
+      "errors": 0
+    },
+    {
+      "label": "28-metadata-captures-start-not-post-command-tree",
+      "recordedDirty": false,
+      "gitStatusAfter": " M src/inventory.ts\n",
+      "postRunBehaviorExit": 1,
+      "observation": "A passing child and clean starting identity do not guarantee unchanged source after that child exits."
+    }
+  ],
+  "commands": [
+    {
+      "label": "source-head",
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:24.406Z",
+      "finishedAt": "2026-10-26T15:41:26.263Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "70f5ec4305bb2cc6ed82dea9470a3b810603874b\n",
+      "stderr": "2026-10-26 20:41:24.755 xcodebuild[91743:135063866]  DVTFilePathFSEvents: Failed to start fs event stream.\n2026-10-26 20:41:24.924 xcodebuild[91743:135063864] [MT] DVTDeveloperPaths: Failed to get length of DARWIN_USER_CACHE_DIR from confstr(3), error = Error Domain=NSPOSIXErrorDomain Code=5 \"Input/output error\". Using NSCachesDirectory instead.\n"
+    },
+    {
+      "label": "source-base-present",
+      "argv": [
+        "git",
+        "cat-file",
+        "-e",
+        "70f5ec4305bb2cc6ed82dea9470a3b810603874b^{commit}"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.264Z",
+      "finishedAt": "2026-10-26T15:41:26.280Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "source-base-is-ancestor",
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+        "HEAD"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.280Z",
+      "finishedAt": "2026-10-26T15:41:26.297Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "evaluated-source-identical-to-base",
+      "argv": [
+        "git",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--exit-code",
+        "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+        "--",
+        "src/",
+        "package.json",
+        "bun.lock"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.297Z",
+      "finishedAt": "2026-10-26T15:41:26.314Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "evaluated-source-untracked",
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--",
+        "src/",
+        "package.json",
+        "bun.lock"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.314Z",
+      "finishedAt": "2026-10-26T15:41:26.330Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "source-status",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.330Z",
+      "finishedAt": "2026-10-26T15:41:26.350Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": " M README.md\n?? docs/\n",
+      "stderr": ""
+    },
+    {
+      "label": "git-version",
+      "argv": [
+        "git",
+        "--version"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.350Z",
+      "finishedAt": "2026-10-26T15:41:26.364Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "git version 2.54.0 (Apple Git-157)\n",
+      "stderr": ""
+    },
+    {
+      "label": "cli-version",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "--version"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:26.365Z",
+      "finishedAt": "2026-10-26T15:41:26.733Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "4.2.1\n",
+      "stderr": ""
+    },
+    {
+      "label": "01-valid-structure-broken-behavior",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:26.736Z",
+      "fixtureSnapshot": "snapshots/09-01-valid-structure-broken-behavior.json",
+      "fixtureSha256": "473ae22d426a5ffd70bfcfd1f92d52093f4096ba3195e4547b2b69a58013cb82",
+      "finishedAt": "2026-10-26T15:41:26.897Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:26.877Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": []
+    },
+    {
+      "label": "02-direct-negative-behavior-control",
+      "argv": [
+        "<BUN>",
+        "test",
+        "checks/reorder.test.ts"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:26.898Z",
+      "fixtureSnapshot": "snapshots/10-02-direct-negative-behavior-control.json",
+      "fixtureSha256": "473ae22d426a5ffd70bfcfd1f92d52093f4096ba3195e4547b2b69a58013cb82",
+      "finishedAt": "2026-10-26T15:41:26.913Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "bun test v1.3.14 (0d9b296a)\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n",
+      "stderr": "\nchecks/reorder.test.ts:\nerror: expect(received).toBe(expected)\n\nExpected: false\nReceived: true\n\n(fail) equality keeps current inventory [0.12ms]\n(pass) a shortage triggers reorder [0.01ms]\n(pass) excess stock does not reorder\n\n 2 pass\n 1 fail\n 3 expect() calls\nRan 3 tests across 1 file. [9.00ms]\n"
+    },
+    {
+      "label": "03-mustverify-runcommands-does-not-run-verification-command",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:26.913Z",
+      "fixtureSnapshot": "snapshots/11-03-mustverify-runcommands-does-not-run-verification-command.json",
+      "fixtureSha256": "473ae22d426a5ffd70bfcfd1f92d52093f4096ba3195e4547b2b69a58013cb82",
+      "finishedAt": "2026-10-26T15:41:27.064Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.049Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": []
+    },
+    {
+      "label": "04-unknown-examples-contradictory-value-accepted",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:27.076Z",
+      "fixtureSnapshot": "snapshots/12-04-unknown-examples-contradictory-value-accepted.json",
+      "fixtureSha256": "bd1672863b868e978b0b050ec3d827941df18cf1302e3ba4e11ad96e01e49cd9",
+      "finishedAt": "2026-10-26T15:41:27.241Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.223Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": []
+    },
+    {
+      "label": "05-unknown-examples-corrected-value-accepted",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:27.241Z",
+      "fixtureSnapshot": "snapshots/13-05-unknown-examples-corrected-value-accepted.json",
+      "fixtureSha256": "fd2136506cd54c3c49493fce18400f059bc3f47f8571447f149ba6d0f2d741fe",
+      "finishedAt": "2026-10-26T15:41:27.398Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.382Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": []
+    },
+    {
+      "label": "06-malformed-xml-control",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:27.398Z",
+      "fixtureSnapshot": "snapshots/14-06-malformed-xml-control.json",
+      "fixtureSha256": "ec52bec8852cfd17f08f3bd6fe7694c0fd1fdad1539d9e16bd8c51e8e64c3f8f",
+      "finishedAt": "2026-10-26T15:41:27.550Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.535Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 12,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"assertion.change-not-approved\",\n      \"file\": \"<RUN_DIR>/fixtures/structural/.grace/changes/active/C-REORDER-BOUNDARY\",\n      \"message\": \"Selected change C-REORDER-BOUNDARY must name one active bundle whose spec.xml and plan.xml are both approved and identity-matched.\",\n      \"title\": \"GRACE 4 Assertion Failure\",\n      \"explanation\": \"A BaselineAssertions or TargetAssertions entry failed against current graph, verification, or filesystem state.\",\n      \"remediation\": [\n        \"Reconcile the current state with the approved plan assertions.\",\n        \"If the approved plan is stale, supersede and replan rather than editing it silently.\"\n      ]\n    },\n    {\n      \"severity\": \"error\",\n      \"code\": \"change.plan-requires-approved-spec\",\n      \"file\": \"<RUN_DIR>/fixtures/structural/.grace/changes/active/C-REORDER-BOUNDARY\",\n      \"message\": \"An active plan may exist only beside an approved spec.\",\n      \"title\": \"GRACE 4 Change Lifecycle Issue\",\n      \"explanation\": \"A change spec or plan has an invalid status, wrapper shape, or active/archive location for the GRACE 4 lifecycle.\",\n      \"remediation\": [\n        \"Keep draft and approved bundles under .grace/changes/active.\",\n        \"Move applied, rejected, cancelled, or superseded bundles to archive with matching statuses.\"\n      ]\n    },\n    {\n      \"severity\": \"error\",\n      \"code\": \"xml.parse\",\n      \"file\": \"<RUN_DIR>/fixtures/structural/.grace/changes/active/C-REORDER-BOUNDARY/spec.xml\",\n      \"line\": 9,\n      \"message\": \"Expected closing tag 'Example' (opened in line 9, col 11) instead of closing tag 'Examples'.\",\n      \"title\": \"Xml Parse\",\n      \"explanation\": \"This issue code does not yet have a dedicated explanation entry, but it still signals drift or missing governance metadata.\",\n      \"remediation\": [\n        \"Inspect the issue message and the referenced file.\",\n        \"Repair the smallest relevant GRACE artifact or governed file section before rerunning lint.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 3,\n    \"errors\": 3,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "assertion.change-not-approved",
+        "change.plan-requires-approved-spec",
+        "xml.parse"
+      ]
+    },
+    {
+      "label": "07-duplicate-required-section-control",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:27.551Z",
+      "fixtureSnapshot": "snapshots/15-07-duplicate-required-section-control.json",
+      "fixtureSha256": "7577421de2cc58fe7afb108c1b07bc7eabc66728909bd62969d4b82c5509329e",
+      "finishedAt": "2026-10-26T15:41:27.705Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.689Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"change.spec-duplicate-section\",\n      \"file\": \"<RUN_DIR>/fixtures/structural/.grace/changes/active/C-REORDER-BOUNDARY/spec.xml\",\n      \"message\": \"C-REORDER-BOUNDARY contains duplicate direct <Goals> sections.\",\n      \"title\": \"GRACE 4 Change Lifecycle Issue\",\n      \"explanation\": \"A change spec or plan has an invalid status, wrapper shape, or active/archive location for the GRACE 4 lifecycle.\",\n      \"remediation\": [\n        \"Keep draft and approved bundles under .grace/changes/active.\",\n        \"Move applied, rejected, cancelled, or superseded bundles to archive with matching statuses.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "change.spec-duplicate-section"
+      ]
+    },
+    {
+      "label": "08-unexpected-companion-xml-rejected",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/structural",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/structural",
+      "startedAt": "2026-10-26T15:41:27.706Z",
+      "fixtureSnapshot": "snapshots/16-08-unexpected-companion-xml-rejected.json",
+      "fixtureSha256": "74442ded3078bc1da5b290e622bce493449ee08cb1dc6e9607f10c0c715ceadd",
+      "finishedAt": "2026-10-26T15:41:27.858Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.841Z\",\n  \"root\": \"<RUN_DIR>/fixtures/structural\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 12,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"change.unexpected-file\",\n      \"file\": \"<RUN_DIR>/fixtures/structural/.grace/changes/active/C-REORDER-BOUNDARY/examples.xml\",\n      \"message\": \"Unsupported XML artifact 'examples.xml' in change bundle C-REORDER-BOUNDARY.\",\n      \"title\": \"GRACE 4 Change Lifecycle Issue\",\n      \"explanation\": \"A change spec or plan has an invalid status, wrapper shape, or active/archive location for the GRACE 4 lifecycle.\",\n      \"remediation\": [\n        \"Keep draft and approved bundles under .grace/changes/active.\",\n        \"Move applied, rejected, cancelled, or superseded bundles to archive with matching statuses.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "change.unexpected-file"
+      ]
+    },
+    {
+      "label": "09-recognized-design-companion-with-prose-examples",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/design-context",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/design-context",
+      "startedAt": "2026-10-26T15:41:27.860Z",
+      "fixtureSnapshot": "snapshots/17-09-recognized-design-companion-with-prose-examples.json",
+      "fixtureSha256": "326f407add49a5abc90315b2a3cd29ffb13c1c11c9f55f5175e4c99f6deaf8f4",
+      "finishedAt": "2026-10-26T15:41:28.007Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:27.992Z\",\n  \"root\": \"<RUN_DIR>/fixtures/design-context\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 12,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": []
+    },
+    {
+      "label": "10-semantic-anchor-attribute-rejected",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/anchor-attributes",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/anchor-attributes",
+      "startedAt": "2026-10-26T15:41:28.012Z",
+      "fixtureSnapshot": "snapshots/18-10-semantic-anchor-attribute-rejected.json",
+      "fixtureSha256": "5e3c238777911df48d71f8ab38674e847cfc2eca65c98c406a35459a82144809",
+      "finishedAt": "2026-10-26T15:41:28.159Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:28.143Z\",\n  \"root\": \"<RUN_DIR>/fixtures/anchor-attributes\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"artifact.semantic-anchor-has-attributes\",\n      \"file\": \"<RUN_DIR>/fixtures/anchor-attributes/.grace/changes/active/C-REORDER-BOUNDARY/spec.xml\",\n      \"message\": \"Semantic anchor <M-INVENTORY> must not declare attributes.\",\n      \"title\": \"GRACE 4 Artifact Grammar Issue\",\n      \"explanation\": \"A .grace XML artifact violates the GRACE 4 root, metadata, version, or semantic-anchor grammar.\",\n      \"remediation\": [\n        \"Use approved GRACE 4 root tags with graceVersion=\\\"4.0\\\".\",\n        \"Keep semantic anchors as XML tags, never attributes.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "artifact.semantic-anchor-has-attributes"
+      ]
+    },
+    {
+      "label": "11-semantic-anchor-in-ordinary-attribute-rejected",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/anchor-attributes",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/anchor-attributes",
+      "startedAt": "2026-10-26T15:41:28.160Z",
+      "fixtureSnapshot": "snapshots/19-11-semantic-anchor-in-ordinary-attribute-rejected.json",
+      "fixtureSha256": "2fe89813887aaa3838a1293b6dc0b549a6a6612ac67192b2c0f972a81a6387e7",
+      "finishedAt": "2026-10-26T15:41:28.316Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:28.300Z\",\n  \"root\": \"<RUN_DIR>/fixtures/anchor-attributes\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"artifact.semantic-anchor-attribute\",\n      \"file\": \"<RUN_DIR>/fixtures/anchor-attributes/.grace/changes/active/C-REORDER-BOUNDARY/spec.xml\",\n      \"message\": \"Semantic anchor 'M-INVENTORY' appears in attribute 'module' on <Example>; anchors must be XML tags.\",\n      \"title\": \"GRACE 4 Artifact Grammar Issue\",\n      \"explanation\": \"A .grace XML artifact violates the GRACE 4 root, metadata, version, or semantic-anchor grammar.\",\n      \"remediation\": [\n        \"Use approved GRACE 4 root tags with graceVersion=\\\"4.0\\\".\",\n        \"Keep semantic anchors as XML tags, never attributes.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "artifact.semantic-anchor-attribute"
+      ]
+    },
+    {
+      "label": "12-semantic-anchor-as-child-accepted",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/anchor-attributes",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/anchor-attributes",
+      "startedAt": "2026-10-26T15:41:28.317Z",
+      "fixtureSnapshot": "snapshots/20-12-semantic-anchor-as-child-accepted.json",
+      "fixtureSha256": "e6a79698b7c22f25f7fd185d33342745fc79d1a92512e99743e23e6613e2779c",
+      "finishedAt": "2026-10-26T15:41:28.472Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:28.456Z\",\n  \"root\": \"<RUN_DIR>/fixtures/anchor-attributes\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": []
+    },
+    {
+      "label": "13-mustverify-missing-record-control",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/anchor-attributes",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/anchor-attributes",
+      "startedAt": "2026-10-26T15:41:28.473Z",
+      "fixtureSnapshot": "snapshots/21-13-mustverify-missing-record-control.json",
+      "fixtureSha256": "2995555cea861fb517b0fb70fb22f354349fc2c569516ee7ad4df955e7450a2f",
+      "finishedAt": "2026-10-26T15:41:28.628Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:28.612Z\",\n  \"root\": \"<RUN_DIR>/fixtures/anchor-attributes\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"assertion.MustVerify\",\n      \"file\": \"<RUN_DIR>/fixtures/anchor-attributes/.grace/changes/active/C-REORDER-BOUNDARY/plan.xml\",\n      \"message\": \"Expected V-M-ABSENT verification coverage.\",\n      \"title\": \"GRACE 4 Assertion Failure\",\n      \"explanation\": \"A BaselineAssertions or TargetAssertions entry failed against current graph, verification, or filesystem state.\",\n      \"remediation\": [\n        \"Reconcile the current state with the approved plan assertions.\",\n        \"If the approved plan is stale, supersede and replan rather than editing it silently.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "assertion.MustVerify"
+      ]
+    },
+    {
+      "label": "14-command-without-opt-in-rejected",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/noop-gate",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/noop-gate",
+      "startedAt": "2026-10-26T15:41:28.630Z",
+      "fixtureSnapshot": "snapshots/22-14-command-without-opt-in-rejected.json",
+      "fixtureSha256": "4d4ea01f889dba4feafa8bd5f6f33eedbceb547a0c4135757e79e3a8a7aee9b7",
+      "finishedAt": "2026-10-26T15:41:28.794Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:28.777Z\",\n  \"root\": \"<RUN_DIR>/fixtures/noop-gate\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"assertion.command-not-evaluated\",\n      \"file\": \"<RUN_DIR>/fixtures/noop-gate/.grace/changes/active/C-REORDER-BOUNDARY/plan.xml\",\n      \"message\": \"MustPassCommand requires explicit command execution opt-in.\",\n      \"title\": \"GRACE 4 Assertion Failure\",\n      \"explanation\": \"A BaselineAssertions or TargetAssertions entry failed against current graph, verification, or filesystem state.\",\n      \"remediation\": [\n        \"Reconcile the current state with the approved plan assertions.\",\n        \"If the approved plan is stale, supersede and replan rather than editing it silently.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "assertion.command-not-evaluated"
+      ]
+    },
+    {
+      "label": "15-noop-command-passes-with-broken-behavior",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/noop-gate",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/noop-gate",
+      "startedAt": "2026-10-26T15:41:28.795Z",
+      "fixtureSnapshot": "snapshots/23-15-noop-command-passes-with-broken-behavior.json",
+      "fixtureSha256": "4d4ea01f889dba4feafa8bd5f6f33eedbceb547a0c4135757e79e3a8a7aee9b7",
+      "finishedAt": "2026-10-26T15:41:28.994Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:28.934Z\",\n  \"root\": \"<RUN_DIR>/fixtures/noop-gate\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun run checks/noop.ts\",\n      \"exitCode\": 0,\n      \"durationMs\": 21,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/noop-gate-687f62f6/runs/2026-10-26T20-41-28_C-REORDER-BOUNDARY/1-bun-run-checks-noop-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun run checks/noop.ts\n[grace] ▶ [1/1] bun run checks/noop.ts\n[grace] ✔ [1/1] bun run checks/noop.ts (21ms)\n[grace] complete: 1/1 commands passed (total 37ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/noop-gate-687f62f6/runs/2026-10-26T20-41-28_C-REORDER-BOUNDARY\n",
+      "issueCodes": []
+    },
+    {
+      "label": "16-behavioral-command-rejects-broken-boundary",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/behavioral-gate",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/behavioral-gate",
+      "startedAt": "2026-10-26T15:41:29.006Z",
+      "fixtureSnapshot": "snapshots/24-16-behavioral-command-rejects-broken-boundary.json",
+      "fixtureSha256": "4f3cfc474eafc2f61ece5f0e335fb1c48295e9422faad3e8002b5a84b0cd2235",
+      "finishedAt": "2026-10-26T15:41:29.204Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:29.145Z\",\n  \"root\": \"<RUN_DIR>/fixtures/behavioral-gate\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"assertion.MustPassCommand\",\n      \"file\": \"<RUN_DIR>/fixtures/behavioral-gate/.grace/changes/active/C-REORDER-BOUNDARY/plan.xml\",\n      \"message\": \"Command failed (1): bun test checks/reorder.test.ts\\nerror: expect(received).toBe(expected)\\n\\nExpected: false\\nReceived: true\\n\\n(fail) equality keeps current inventory [0.13ms]\\n(pass) a shortage triggers reorder [0.01ms]\\n(pass) excess stock does not reorder [0.01ms]\\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\\n\\n 2 pass\\n 1 fail\\n 3 expect() calls\\nRan 3 tests across 1 file. [9.00ms]\",\n      \"title\": \"GRACE 4 Assertion Failure\",\n      \"explanation\": \"A BaselineAssertions or TargetAssertions entry failed against current graph, verification, or filesystem state.\",\n      \"remediation\": [\n        \"Reconcile the current state with the approved plan assertions.\",\n        \"If the approved plan is stale, supersede and replan rather than editing it silently.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun test checks/reorder.test.ts\",\n      \"exitCode\": 1,\n      \"durationMs\": 22,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun test checks/reorder.test.ts\n[grace] ▶ [1/1] bun test checks/reorder.test.ts\n[grace] ✖ [1/1] bun test checks/reorder.test.ts (22ms, exit 1)\n[grace]   error: expect(received).toBe(expected)\n[grace]   \n[grace]   Expected: false\n[grace]   Received: true\n[grace]   \n[grace]   (fail) equality keeps current inventory [0.13ms]\n[grace]   (pass) a shortage triggers reorder [0.01ms]\n[grace]   (pass) excess stock does not reorder [0.01ms]\n[grace]   [Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[grace]   [Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[grace]   \n[grace]    2 pass\n[grace]    1 fail\n[grace]    3 expect() calls\n[grace]   Ran 3 tests across 1 file. [9.00ms]\n[grace]   full log: <RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log\n[grace] stopped: command 1 of 1 failed (0 passed, total 37ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY\n",
+      "issueCodes": [
+        "assertion.MustPassCommand"
+      ]
+    },
+    {
+      "label": "17-same-behavioral-command-accepts-correct-boundary",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/behavioral-gate",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/behavioral-gate",
+      "startedAt": "2026-10-26T15:41:29.212Z",
+      "fixtureSnapshot": "snapshots/25-17-same-behavioral-command-accepts-correct-boundary.json",
+      "fixtureSha256": "6ac03aab9eac56f9e7827c4bfa962f78707232c9e19dab75917d527c1e975d14",
+      "finishedAt": "2026-10-26T15:41:29.430Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:29.361Z\",\n  \"root\": \"<RUN_DIR>/fixtures/behavioral-gate\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun test checks/reorder.test.ts\",\n      \"exitCode\": 0,\n      \"durationMs\": 22,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY-2/1-bun-test-checks-reorder-test-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun test checks/reorder.test.ts\n[grace] ▶ [1/1] bun test checks/reorder.test.ts\n[grace] ✔ [1/1] bun test checks/reorder.test.ts (22ms)\n[grace] complete: 1/1 commands passed (total 40ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY-2\n",
+      "issueCodes": []
+    },
+    {
+      "label": "git-25",
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "probe"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:29.440Z",
+      "finishedAt": "2026-10-26T15:41:29.463Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "Initialized empty Git repository in <RUN_DIR>/fixtures/freshness/.git/\n",
+      "stderr": ""
+    },
+    {
+      "label": "git-26",
+      "argv": [
+        "git",
+        "add",
+        "."
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:29.463Z",
+      "finishedAt": "2026-10-26T15:41:29.488Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "git-27",
+      "argv": [
+        "git",
+        "-c",
+        "commit.gpgsign=false",
+        "-c",
+        "core.hooksPath=<RUN_DIR>/empty-hooks",
+        "commit",
+        "-m",
+        "Seed complete independent fixture"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:29.488Z",
+      "finishedAt": "2026-10-26T15:41:29.518Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "[probe (root-commit) 1ab68ab] Seed complete independent fixture\n 14 files changed, 50 insertions(+)\n create mode 100644 .grace/changes/active/C-REORDER-BOUNDARY/plan.xml\n create mode 100644 .grace/changes/active/C-REORDER-BOUNDARY/spec.xml\n create mode 100644 .grace/context/deployment.xml\n create mode 100644 .grace/context/principles.xml\n create mode 100644 .grace/context/requirements.xml\n create mode 100644 .grace/context/technology.xml\n create mode 100644 .grace/context/ux-guidelines.xml\n create mode 100644 .grace/graph/index.xml\n create mode 100644 .grace/graph/inventory.xml\n create mode 100644 .grace/verification/index.xml\n create mode 100644 .grace/verification/inventory.xml\n create mode 100644 checks/noop.ts\n create mode 100644 checks/reorder.test.ts\n create mode 100644 src/inventory.ts\n",
+      "stderr": ""
+    },
+    {
+      "label": "18-clean-tree-passing-run",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/freshness",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:29.518Z",
+      "fixtureSnapshot": "snapshots/29-18-clean-tree-passing-run.json",
+      "fixtureSha256": "6ac03aab9eac56f9e7827c4bfa962f78707232c9e19dab75917d527c1e975d14",
+      "finishedAt": "2026-10-26T15:41:29.741Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:29.662Z\",\n  \"root\": \"<RUN_DIR>/fixtures/freshness\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun test checks/reorder.test.ts\",\n      \"exitCode\": 0,\n      \"durationMs\": 20,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun test checks/reorder.test.ts\n[grace] ▶ [1/1] bun test checks/reorder.test.ts\n[grace] ✔ [1/1] bun test checks/reorder.test.ts (20ms)\n[grace] complete: 1/1 commands passed (total 54ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY\n",
+      "issueCodes": []
+    },
+    {
+      "label": "19-status-after-behavior-regression",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "status",
+        "--path",
+        "<RUN_DIR>/fixtures/freshness",
+        "--format",
+        "json",
+        "--fail-on",
+        "errors"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:29.749Z",
+      "fixtureSnapshot": "snapshots/30-19-status-after-behavior-regression.json",
+      "fixtureSha256": "4f3cfc474eafc2f61ece5f0e335fb1c48295e9422faad3e8002b5a84b0cd2235",
+      "finishedAt": "2026-10-26T15:41:29.937Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-status\",\n  \"generatedAt\": \"2026-10-26T15:41:29.933Z\",\n  \"root\": \"<RUN_DIR>/fixtures/freshness\",\n  \"projectKind\": \"grace4\",\n  \"summary\": {\n    \"graceVersion\": \"4.0\",\n    \"contextArtifacts\": 5,\n    \"graphModules\": 1,\n    \"verificationEntries\": 1,\n    \"activeChanges\": 1,\n    \"archivedChanges\": 0,\n    \"integrityErrors\": 0,\n    \"integrityWarnings\": 0,\n    \"readyModules\": 1,\n    \"attentionModules\": 0,\n    \"blockedModules\": 0\n  },\n  \"changes\": [\n    {\n      \"changeId\": \"C-REORDER-BOUNDARY\",\n      \"location\": \"active\",\n      \"specStatus\": \"approved\",\n      \"planStatus\": \"approved\",\n      \"derivedStates\": [\n        \"ready-to-execute\"\n      ],\n      \"path\": \".grace/changes/active/C-REORDER-BOUNDARY\"\n    }\n  ],\n  \"derivedStates\": [\n    \"explained-observed-drift\",\n    \"ready-to-execute\"\n  ],\n  \"integrity\": {\n    \"errors\": 0,\n    \"warnings\": 0,\n    \"topIssues\": []\n  },\n  \"observedDrift\": {\n    \"available\": true,\n    \"changedFiles\": [\n      \"src/inventory.ts\"\n    ],\n    \"explainedFiles\": [\n      \"src/inventory.ts\"\n    ],\n    \"unexplainedFiles\": []\n  },\n  \"nextAction\": \"Run $grace-execute for approved active changes.\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "label": "20-prior-pass-does-not-satisfy-command-opt-in",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/freshness",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:29.938Z",
+      "fixtureSnapshot": "snapshots/31-20-prior-pass-does-not-satisfy-command-opt-in.json",
+      "fixtureSha256": "4f3cfc474eafc2f61ece5f0e335fb1c48295e9422faad3e8002b5a84b0cd2235",
+      "finishedAt": "2026-10-26T15:41:30.089Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:30.074Z\",\n  \"root\": \"<RUN_DIR>/fixtures/freshness\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": false,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"assertion.command-not-evaluated\",\n      \"file\": \"<RUN_DIR>/fixtures/freshness/.grace/changes/active/C-REORDER-BOUNDARY/plan.xml\",\n      \"message\": \"MustPassCommand requires explicit command execution opt-in.\",\n      \"title\": \"GRACE 4 Assertion Failure\",\n      \"explanation\": \"A BaselineAssertions or TargetAssertions entry failed against current graph, verification, or filesystem state.\",\n      \"remediation\": [\n        \"Reconcile the current state with the approved plan assertions.\",\n        \"If the approved plan is stale, supersede and replan rather than editing it silently.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  }\n}\n",
+      "stderr": "",
+      "issueCodes": [
+        "assertion.command-not-evaluated"
+      ]
+    },
+    {
+      "label": "21-rerun-rejects-regression-despite-prior-pass",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/freshness",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:30.089Z",
+      "fixtureSnapshot": "snapshots/32-21-rerun-rejects-regression-despite-prior-pass.json",
+      "fixtureSha256": "4f3cfc474eafc2f61ece5f0e335fb1c48295e9422faad3e8002b5a84b0cd2235",
+      "finishedAt": "2026-10-26T15:41:30.306Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:30.228Z\",\n  \"root\": \"<RUN_DIR>/fixtures/freshness\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [\n    {\n      \"severity\": \"error\",\n      \"code\": \"assertion.MustPassCommand\",\n      \"file\": \"<RUN_DIR>/fixtures/freshness/.grace/changes/active/C-REORDER-BOUNDARY/plan.xml\",\n      \"message\": \"Command failed (1): bun test checks/reorder.test.ts\\nerror: expect(received).toBe(expected)\\n\\nExpected: false\\nReceived: true\\n\\n(fail) equality keeps current inventory [0.12ms]\\n(pass) a shortage triggers reorder [0.01ms]\\n(pass) excess stock does not reorder\\n\\n 2 pass\\n 1 fail\\n 3 expect() calls\\nRan 3 tests across 1 file. [9.00ms]\\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\",\n      \"title\": \"GRACE 4 Assertion Failure\",\n      \"explanation\": \"A BaselineAssertions or TargetAssertions entry failed against current graph, verification, or filesystem state.\",\n      \"remediation\": [\n        \"Reconcile the current state with the approved plan assertions.\",\n        \"If the approved plan is stale, supersede and replan rather than editing it silently.\"\n      ]\n    }\n  ],\n  \"summary\": {\n    \"issues\": 1,\n    \"errors\": 1,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun test checks/reorder.test.ts\",\n      \"exitCode\": 1,\n      \"durationMs\": 22,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun test checks/reorder.test.ts\n[grace] ▶ [1/1] bun test checks/reorder.test.ts\n[grace] ✖ [1/1] bun test checks/reorder.test.ts (22ms, exit 1)\n[grace]   error: expect(received).toBe(expected)\n[grace]   \n[grace]   Expected: false\n[grace]   Received: true\n[grace]   \n[grace]   (fail) equality keeps current inventory [0.12ms]\n[grace]   (pass) a shortage triggers reorder [0.01ms]\n[grace]   (pass) excess stock does not reorder\n[grace]   \n[grace]    2 pass\n[grace]    1 fail\n[grace]    3 expect() calls\n[grace]   Ran 3 tests across 1 file. [9.00ms]\n[grace]   [Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[grace]   [Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[grace]   full log: <RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log\n[grace] stopped: command 1 of 1 failed (0 passed, total 55ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY\n",
+      "issueCodes": [
+        "assertion.MustPassCommand"
+      ]
+    },
+    {
+      "label": "22-dirty-content-version-a-passes",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/freshness",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:30.316Z",
+      "fixtureSnapshot": "snapshots/33-22-dirty-content-version-a-passes.json",
+      "fixtureSha256": "10fb436d9a111c0bf73fba57aeab7960b82b452031415fe555e41223ebebbf25",
+      "finishedAt": "2026-10-26T15:41:30.543Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:30.461Z\",\n  \"root\": \"<RUN_DIR>/fixtures/freshness\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun test checks/reorder.test.ts\",\n      \"exitCode\": 0,\n      \"durationMs\": 21,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-2/1-bun-test-checks-reorder-test-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun test checks/reorder.test.ts\n[grace] ▶ [1/1] bun test checks/reorder.test.ts\n[grace] ✔ [1/1] bun test checks/reorder.test.ts (21ms)\n[grace] complete: 1/1 commands passed (total 53ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-2\n",
+      "issueCodes": []
+    },
+    {
+      "label": "23-dirty-content-version-b-passes",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/freshness",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/freshness",
+      "startedAt": "2026-10-26T15:41:30.551Z",
+      "fixtureSnapshot": "snapshots/34-23-dirty-content-version-b-passes.json",
+      "fixtureSha256": "0d937178540ad568805cf1dd5d1eaa0ef9c5013233e203a83bf6956f317a581e",
+      "finishedAt": "2026-10-26T15:41:30.778Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:30.693Z\",\n  \"root\": \"<RUN_DIR>/fixtures/freshness\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 3,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun test checks/reorder.test.ts\",\n      \"exitCode\": 0,\n      \"durationMs\": 22,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-3/1-bun-test-checks-reorder-test-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun test checks/reorder.test.ts\n[grace] ▶ [1/1] bun test checks/reorder.test.ts\n[grace] ✔ [1/1] bun test checks/reorder.test.ts (22ms)\n[grace] complete: 1/1 commands passed (total 54ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-3\n",
+      "issueCodes": []
+    },
+    {
+      "label": "git-34",
+      "argv": [
+        "git",
+        "init",
+        "-b",
+        "probe"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/mutation-during-command",
+      "startedAt": "2026-10-26T15:41:30.789Z",
+      "finishedAt": "2026-10-26T15:41:30.810Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "Initialized empty Git repository in <RUN_DIR>/fixtures/mutation-during-command/.git/\n",
+      "stderr": ""
+    },
+    {
+      "label": "git-35",
+      "argv": [
+        "git",
+        "add",
+        "."
+      ],
+      "cwd": "<RUN_DIR>/fixtures/mutation-during-command",
+      "startedAt": "2026-10-26T15:41:30.811Z",
+      "finishedAt": "2026-10-26T15:41:30.835Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "git-36",
+      "argv": [
+        "git",
+        "-c",
+        "commit.gpgsign=false",
+        "-c",
+        "core.hooksPath=<RUN_DIR>/empty-hooks",
+        "commit",
+        "-m",
+        "Seed fixture for within-command mutation control"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/mutation-during-command",
+      "startedAt": "2026-10-26T15:41:30.835Z",
+      "finishedAt": "2026-10-26T15:41:30.867Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "[probe (root-commit) 75e99eb] Seed fixture for within-command mutation control\n 15 files changed, 55 insertions(+)\n create mode 100644 .grace/changes/active/C-REORDER-BOUNDARY/plan.xml\n create mode 100644 .grace/changes/active/C-REORDER-BOUNDARY/spec.xml\n create mode 100644 .grace/context/deployment.xml\n create mode 100644 .grace/context/principles.xml\n create mode 100644 .grace/context/requirements.xml\n create mode 100644 .grace/context/technology.xml\n create mode 100644 .grace/context/ux-guidelines.xml\n create mode 100644 .grace/graph/index.xml\n create mode 100644 .grace/graph/inventory.xml\n create mode 100644 .grace/verification/index.xml\n create mode 100644 .grace/verification/inventory.xml\n create mode 100644 checks/mutate-after-check.ts\n create mode 100644 checks/noop.ts\n create mode 100644 checks/reorder.test.ts\n create mode 100644 src/inventory.ts\n",
+      "stderr": ""
+    },
+    {
+      "label": "25-source-mutating-command-starts-clean-and-passes",
+      "argv": [
+        "<BUN>",
+        "<REPO>/src/grace.ts",
+        "lint",
+        "--path",
+        "<RUN_DIR>/fixtures/mutation-during-command",
+        "--change",
+        "C-REORDER-BOUNDARY",
+        "--assertions",
+        "target",
+        "--format",
+        "json",
+        "--run-commands",
+        "--command-timeout",
+        "30"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/mutation-during-command",
+      "startedAt": "2026-10-26T15:41:30.867Z",
+      "fixtureSnapshot": "snapshots/38-25-source-mutating-command-starts-clean-and-passes.json",
+      "fixtureSha256": "bff3368dc34c3ac0e685e7e78d2b8667b918a286e1a76b806e30e0b55e6d281f",
+      "finishedAt": "2026-10-26T15:41:31.085Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "{\n  \"schemaVersion\": \"1.0.0\",\n  \"tool\": \"grace-lint\",\n  \"generatedAt\": \"2026-10-26T15:41:31.009Z\",\n  \"root\": \"<RUN_DIR>/fixtures/mutation-during-command\",\n  \"profile\": \"standard\",\n  \"assertionMode\": \"target\",\n  \"changeId\": \"C-REORDER-BOUNDARY\",\n  \"commandsEnabled\": true,\n  \"filesChecked\": 4,\n  \"governedFiles\": 1,\n  \"xmlFilesChecked\": 11,\n  \"issues\": [],\n  \"summary\": {\n    \"issues\": 0,\n    \"errors\": 0,\n    \"warnings\": 0\n  },\n  \"commands\": [\n    {\n      \"index\": 1,\n      \"command\": \"bun run checks/mutate-after-check.ts\",\n      \"exitCode\": 0,\n      \"durationMs\": 23,\n      \"timedOut\": false,\n      \"skipped\": false,\n      \"logFile\": \"<RUN_DIR>/cache/grace/run-commands/mutation-during-command-5df8e324/runs/2026-10-26T20-41-31_C-REORDER-BOUNDARY/1-bun-run-checks-mutate-after-check-ts.log\"\n    }\n  ]\n}\n",
+      "stderr": "[grace] run-commands: change C-REORDER-BOUNDARY (target), 1 assertion, 1 command, timeout 30s\n[grace]   [1/1] bun run checks/mutate-after-check.ts\n[grace] ▶ [1/1] bun run checks/mutate-after-check.ts\n[grace] ✔ [1/1] bun run checks/mutate-after-check.ts (23ms)\n[grace] complete: 1/1 commands passed (total 54ms)\n[grace] logs: <RUN_DIR>/cache/grace/run-commands/mutation-during-command-5df8e324/runs/2026-10-26T20-41-31_C-REORDER-BOUNDARY\n",
+      "issueCodes": []
+    },
+    {
+      "label": "26-git-dirtiness-after-command",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/mutation-during-command",
+      "startedAt": "2026-10-26T15:41:31.094Z",
+      "finishedAt": "2026-10-26T15:41:31.111Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": " M src/inventory.ts\n",
+      "stderr": ""
+    },
+    {
+      "label": "27-post-run-behavior-control-fails",
+      "argv": [
+        "<BUN>",
+        "test",
+        "checks/reorder.test.ts"
+      ],
+      "cwd": "<RUN_DIR>/fixtures/mutation-during-command",
+      "startedAt": "2026-10-26T15:41:31.111Z",
+      "fixtureSnapshot": "snapshots/40-27-post-run-behavior-control-fails.json",
+      "fixtureSha256": "7a2ca21975f95c07b39635746343d88d3e47a7e4687f5da52e63ff42374a730a",
+      "finishedAt": "2026-10-26T15:41:31.126Z",
+      "exitCode": 1,
+      "timedOut": false,
+      "stdout": "bun test v1.3.14 (0d9b296a)\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n",
+      "stderr": "\nchecks/reorder.test.ts:\nerror: expect(received).toBe(expected)\n\nExpected: false\nReceived: true\n\n(fail) equality keeps current inventory [0.13ms]\n(pass) a shortage triggers reorder [0.01ms]\n(pass) excess stock does not reorder\n\n 2 pass\n 1 fail\n 3 expect() calls\nRan 3 tests across 1 file. [8.00ms]\n"
+    },
+    {
+      "label": "evaluated-source-still-identical-at-end",
+      "argv": [
+        "git",
+        "diff",
+        "--no-ext-diff",
+        "--no-textconv",
+        "--exit-code",
+        "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+        "--",
+        "src/",
+        "package.json",
+        "bun.lock"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:31.126Z",
+      "finishedAt": "2026-10-26T15:41:31.142Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "label": "evaluated-source-still-no-untracked-at-end",
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--",
+        "src/",
+        "package.json",
+        "bun.lock"
+      ],
+      "cwd": "<REPO>",
+      "startedAt": "2026-10-26T15:41:31.142Z",
+      "finishedAt": "2026-10-26T15:41:31.157Z",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "nativeRuns": [
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/behavioral-gate",
+        "slug": "behavioral-gate-d1f690cb",
+        "pid": 91818,
+        "head": null,
+        "branch": null,
+        "dirty": null,
+        "startedAt": "2026-10-26T15:41:29.158Z",
+        "finishedAt": "2026-10-26T15:41:29.195Z",
+        "status": "failed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun test checks/reorder.test.ts",
+            "exitCode": 1,
+            "durationMs": 22,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log",
+          "output": "bun test v1.3.14 (0d9b296a)\n\nchecks/reorder.test.ts:\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\nerror: expect(received).toBe(expected)\n\nExpected: false\nReceived: true\n\n(fail) equality keeps current inventory [0.13ms]\n(pass) a shortage triggers reorder [0.01ms]\n(pass) excess stock does not reorder [0.01ms]\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n\n 2 pass\n 1 fail\n 3 expect() calls\nRan 3 tests across 1 file. [9.00ms]\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY-2/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/behavioral-gate",
+        "slug": "behavioral-gate-d1f690cb",
+        "pid": 91823,
+        "head": null,
+        "branch": null,
+        "dirty": null,
+        "startedAt": "2026-10-26T15:41:29.381Z",
+        "finishedAt": "2026-10-26T15:41:29.421Z",
+        "status": "passed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun test checks/reorder.test.ts",
+            "exitCode": 0,
+            "durationMs": 22,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY-2/1-bun-test-checks-reorder-test-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/behavioral-gate-d1f690cb/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY-2/1-bun-test-checks-reorder-test-ts.log",
+          "output": "bun test v1.3.14 (0d9b296a)\n\nchecks/reorder.test.ts:\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n(pass) equality keeps current inventory [0.07ms]\n(pass) a shortage triggers reorder [0.02ms]\n(pass) excess stock does not reorder\n\n 3 pass\n 0 fail\n 3 expect() calls\nRan 3 tests across 1 file. [8.00ms]\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/freshness",
+        "slug": "freshness-fece4a16",
+        "pid": 91838,
+        "head": "1ab68ab85b3ad23e7b81d2f2afa77c199c4a4be2",
+        "branch": "probe",
+        "dirty": false,
+        "startedAt": "2026-10-26T15:41:29.677Z",
+        "finishedAt": "2026-10-26T15:41:29.731Z",
+        "status": "passed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun test checks/reorder.test.ts",
+            "exitCode": 0,
+            "durationMs": 20,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-29_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log",
+          "output": "bun test v1.3.14 (0d9b296a)\n\nchecks/reorder.test.ts:\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n(pass) equality keeps current inventory [0.10ms]\n(pass) a shortage triggers reorder [0.01ms]\n(pass) excess stock does not reorder\n\n 3 pass\n 0 fail\n 3 expect() calls\nRan 3 tests across 1 file. [8.00ms]\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/freshness",
+        "slug": "freshness-fece4a16",
+        "pid": 91852,
+        "head": "1ab68ab85b3ad23e7b81d2f2afa77c199c4a4be2",
+        "branch": "probe",
+        "dirty": true,
+        "startedAt": "2026-10-26T15:41:30.242Z",
+        "finishedAt": "2026-10-26T15:41:30.297Z",
+        "status": "failed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun test checks/reorder.test.ts",
+            "exitCode": 1,
+            "durationMs": 22,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY/1-bun-test-checks-reorder-test-ts.log",
+          "output": "bun test v1.3.14 (0d9b296a)\n\nchecks/reorder.test.ts:\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\nerror: expect(received).toBe(expected)\n\nExpected: false\nReceived: true\n\n(fail) equality keeps current inventory [0.12ms]\n(pass) a shortage triggers reorder [0.01ms]\n(pass) excess stock does not reorder\n\n 2 pass\n 1 fail\n 3 expect() calls\nRan 3 tests across 1 file. [9.00ms]\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-2/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/freshness",
+        "slug": "freshness-fece4a16",
+        "pid": 91860,
+        "head": "1ab68ab85b3ad23e7b81d2f2afa77c199c4a4be2",
+        "branch": "probe",
+        "dirty": true,
+        "startedAt": "2026-10-26T15:41:30.481Z",
+        "finishedAt": "2026-10-26T15:41:30.534Z",
+        "status": "passed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun test checks/reorder.test.ts",
+            "exitCode": 0,
+            "durationMs": 21,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-2/1-bun-test-checks-reorder-test-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-2/1-bun-test-checks-reorder-test-ts.log",
+          "output": "bun test v1.3.14 (0d9b296a)\n\nchecks/reorder.test.ts:\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n(pass) equality keeps current inventory [0.07ms]\n(pass) a shortage triggers reorder [0.01ms]\n(pass) excess stock does not reorder\n\n 3 pass\n 0 fail\n 3 expect() calls\nRan 3 tests across 1 file. [8.00ms]\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-3/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/freshness",
+        "slug": "freshness-fece4a16",
+        "pid": 91869,
+        "head": "1ab68ab85b3ad23e7b81d2f2afa77c199c4a4be2",
+        "branch": "probe",
+        "dirty": true,
+        "startedAt": "2026-10-26T15:41:30.715Z",
+        "finishedAt": "2026-10-26T15:41:30.769Z",
+        "status": "passed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun test checks/reorder.test.ts",
+            "exitCode": 0,
+            "durationMs": 22,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-3/1-bun-test-checks-reorder-test-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/freshness-fece4a16/runs/2026-10-26T20-41-30_C-REORDER-BOUNDARY-3/1-bun-test-checks-reorder-test-ts.log",
+          "output": "bun test v1.3.14 (0d9b296a)\n\nchecks/reorder.test.ts:\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n(pass) equality keeps current inventory [0.08ms]\n(pass) a shortage triggers reorder [0.02ms]\n(pass) excess stock does not reorder [0.01ms]\n\n 3 pass\n 0 fail\n 3 expect() calls\nRan 3 tests across 1 file. [8.00ms]\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/mutation-during-command-5df8e324/runs/2026-10-26T20-41-31_C-REORDER-BOUNDARY/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/mutation-during-command",
+        "slug": "mutation-during-command-5df8e324",
+        "pid": 91885,
+        "head": "75e99eb516844e4f2261e18ce7d96111f3a90a9f",
+        "branch": "probe",
+        "dirty": false,
+        "startedAt": "2026-10-26T15:41:31.023Z",
+        "finishedAt": "2026-10-26T15:41:31.077Z",
+        "status": "passed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun run checks/mutate-after-check.ts",
+            "exitCode": 0,
+            "durationMs": 23,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/mutation-during-command-5df8e324/runs/2026-10-26T20-41-31_C-REORDER-BOUNDARY/1-bun-run-checks-mutate-after-check-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/mutation-during-command-5df8e324/runs/2026-10-26T20-41-31_C-REORDER-BOUNDARY/1-bun-run-checks-mutate-after-check-ts.log",
+          "output": "[Inventory][needsReorder][BLOCK_COMPARE] compare quantities\nBoundary checked, then source deliberately changed before command exit\n"
+        }
+      ]
+    },
+    {
+      "file": "<RUN_DIR>/cache/grace/run-commands/noop-gate-687f62f6/runs/2026-10-26T20-41-28_C-REORDER-BOUNDARY/meta.json",
+      "data": {
+        "schemaVersion": "1.1.0",
+        "tool": "grace-lint",
+        "changeId": "C-REORDER-BOUNDARY",
+        "assertionMode": "target",
+        "projectRoot": "<RUN_DIR>/fixtures/noop-gate",
+        "slug": "noop-gate-687f62f6",
+        "pid": 91811,
+        "head": null,
+        "branch": null,
+        "dirty": null,
+        "startedAt": "2026-10-26T15:41:28.949Z",
+        "finishedAt": "2026-10-26T15:41:28.986Z",
+        "status": "passed",
+        "commands": [
+          {
+            "index": 1,
+            "assertionId": "plan.xml#2",
+            "command": "bun run checks/noop.ts",
+            "exitCode": 0,
+            "durationMs": 21,
+            "timedOut": false,
+            "skipped": false,
+            "logFile": "<RUN_DIR>/cache/grace/run-commands/noop-gate-687f62f6/runs/2026-10-26T20-41-28_C-REORDER-BOUNDARY/1-bun-run-checks-noop-ts.log"
+          }
+        ]
+      },
+      "commandLogs": [
+        {
+          "file": "<RUN_DIR>/cache/grace/run-commands/noop-gate-687f62f6/runs/2026-10-26T20-41-28_C-REORDER-BOUNDARY/1-bun-run-checks-noop-ts.log",
+          "output": "NOOP_ONLY: no inventory function was imported or called\n"
+        }
+      ]
+    }
+  ]
+}

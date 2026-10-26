@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-26",
+  "implementationBase": "70f5ec4305bb2cc6ed82dea9470a3b810603874b",
+  "runtime": {
+    "bun": "1.3.14",
+    "platform": "darwin",
+    "architecture": "arm64"
+  },
+  "checks": [
+    {
+      "command": "TMPDIR=<TMP_DIR> bun test --timeout=120000",
+      "exitCode": 0,
+      "passed": 413,
+      "skipped": [
+        "Windows cmd.exe command assertion",
+        "Windows case-insensitive scope collision",
+        "Real Dart temporary analyzer",
+        "Governed file inside Dart package"
+      ],
+      "failed": 0,
+      "testCount": 417,
+      "testFiles": 27,
+      "expectCalls": 1360,
+      "rawLogSha256": "caf07a25d23d0e21dd9e62b1f1b48f17cc02f5207bdcf1b29c7f9b9e5e75be3d",
+      "rawLogPublished": false,
+      "summaryLines": [
+        "413 pass",
+        "4 skip",
+        "0 fail",
+        "1360 expect() calls",
+        "Ran 417 tests across 27 files."
+      ]
+    },
+    {
+      "command": "TMPDIR=<TMP_DIR> bun run typecheck",
+      "exitCode": 0
+    },
+    {
+      "command": "TMPDIR=<TMP_DIR> bun run ./scripts/validate-marketplace.ts",
+      "exitCode": 0,
+      "status": "PASS",
+      "checks": [
+        "Marketplace sync",
+        "Version consistency",
+        "Required fields",
+        "Structure (single plugin.json)",
+        "No hardcoded paths"
+      ]
+    },
+    {
+      "command": "bun docs/research/behavioral-examples/evidence/probe.ts <REPO> <NEW_RUN_DIR>",
+      "exitCode": 0,
+      "observations": 26,
+      "subprocesses": 42,
+      "sourceMatchesBase": true
+    },
+    {
+      "command": "bun docs/research/behavioral-examples/evidence/export-results.ts <RUN_DIR> <NEW_PUBLIC_DIR>",
+      "exitCode": 0,
+      "bytes": 137513,
+      "resultsSha256": "f8ad52b9d8ffdd8c6dd44d7f48747279f52b16daff076ef2caf818dbe14a3dec",
+      "fixturesSha256": "7bf6e0cebaf0c5e18aaa33c30ba82f080bda066cf97363f9d7ce3899d4d3802f"
+    },
+    {
+      "check": "Independently reconstruct published snapshots and verify hashes, exact negative controls and timeout flags",
+      "status": "PASS",
+      "snapshots": 25,
+      "manifests": 18,
+      "blobs": 31
+    },
+    {
+      "check": "Relative Markdown links and private-path audit",
+      "status": "PASS",
+      "markdownFiles": 5,
+      "relativeLinks": 10
+    }
+  ],
+  "limits": [
+    "Local macOS validation only",
+    "Repository suite was run before adding research files; production sources remain unchanged",
+    "No LLM-generation benchmark run",
+    "No remote CI result claimed"
+  ],
+  "recordScope": "Historical baseline research; current methodology validation is recorded separately below.",
+  "commandNormalization": "The generic temporary-directory setting is shown as <TMP_DIR>; historical repository-relative script paths are retained as recorded, while standalone reproduction paths are in evidence/README.md.",
+  "currentMethodology": {
+    "pullRequest": "https://github.com/osovv/grace-marketplace/pull/63",
+    "currentCommit": "11d15732a558dc14dd8868cba9fd4453304e77a8",
+    "fullSuite": {
+      "scope": "Methodology changes before the final changelog-only correction",
+      "command": "TMPDIR=<TMP_DIR> bun test --timeout=120000",
+      "exitCode": 0,
+      "passed": 416,
+      "skipped": 4,
+      "failed": 0,
+      "testCount": 420,
+      "testFiles": 28,
+      "expectCalls": 1389,
+      "rawLogSha256": "1887c252eb5a0229c24856de3992775706ccea7f1a9bc264459c6be95970d955",
+      "rawLogPublished": false,
+      "summaryLines": [
+        "416 pass",
+        "4 skip",
+        "0 fail",
+        "1389 expect() calls",
+        "Ran 420 tests across 28 files."
+      ]
+    },
+    "finalChangelogFocusedCheck": {
+      "commit": "11d15732a558dc14dd8868cba9fd4453304e77a8",
+      "command": "TMPDIR=<TMP_DIR> bun test scripts/release-summary.test.ts scripts/release-check.test.ts",
+      "exitCode": 0,
+      "passed": 58,
+      "failed": 0,
+      "rawLogRetained": false,
+      "evidence": "Recorded coordinating-agent tool-output summary; not a rerun during packaging."
+    },
+    "finalReleaseCheck": {
+      "command": "bun run release:check",
+      "exitCode": 0,
+      "evidence": "Coordinating-agent and reviewer checks; no new run during packaging."
+    },
+    "limits": [
+      "Methodology compatibility validation is not an agent-performance experiment.",
+      "The final focused check is not a full-suite rerun at the final changelog commit."
+    ]
+  }
+}
