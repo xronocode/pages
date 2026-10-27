@@ -118,32 +118,58 @@ const navItems = [
   <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
 
   {COLLECT_KEY && (
-    // First-party page views: our own collector, no cookies and no third-party SDK.
+    // First-party counters: page views, outbound clicks and read-to-end. Our own
+    // collector, no cookies, no third-party SDK, key bound to this host by Origin.
     <script is:inline define:vars={{ collectKey: COLLECT_KEY }}>
       (function () {
-        try {
-          var sid = sessionStorage.getItem("wc_sid");
-          if (!sid) {
-            sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
-            sessionStorage.setItem("wc_sid", sid);
+        var ENDPOINT = "https://dash.xronocode.com/api/v1/collect";
+        function sid() {
+          var id = sessionStorage.getItem("wc_sid");
+          if (!id) {
+            id = Math.random().toString(36).slice(2) + Date.now().toString(36);
+            sessionStorage.setItem("wc_sid", id);
           }
-          var id = "p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
-          fetch("https://dash.xronocode.com/api/v1/collect", {
-            method: "POST",
-            keepalive: true,
-            headers: { "content-type": "application/json", "x-collect-key": collectKey },
-            body: JSON.stringify({
-              events: [{
-                id: id,
-                name: "pageview",
-                session: sid,
-                ts: Date.now(),
-                path: location.pathname,
-                referrer: document.referrer ? new URL(document.referrer).host : null
-              }]
-            })
-          });
-        } catch (e) {}
+          return id;
+        }
+        function send(name, extra) {
+          try {
+            var event = {
+              id: "p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8),
+              name: name,
+              session: sid(),
+              ts: Date.now(),
+              path: location.pathname
+            };
+            for (var key in extra) if (Object.prototype.hasOwnProperty.call(extra, key)) event[key] = extra[key];
+            fetch(ENDPOINT, {
+              method: "POST",
+              keepalive: true,
+              headers: { "content-type": "application/json", "x-collect-key": collectKey },
+              body: JSON.stringify({ events: [event] })
+            });
+          } catch (e) {}
+        }
+
+        var referrer = "";
+        try { referrer = document.referrer ? new URL(document.referrer).host : ""; } catch (e) {}
+        send("pageview", referrer ? { referrer: referrer } : null);
+
+        document.addEventListener("click", function (event) {
+          var link = event.target && event.target.closest ? event.target.closest("a[href]") : null;
+          if (!link) return;
+          var host = "";
+          try { host = new URL(link.href, location.href).host; } catch (e) { return; }
+          if (!host || host === location.host) return;
+          send("outbound", { props: { host: host } });
+        });
+
+        var finished = false;
+        window.addEventListener("scroll", function () {
+          if (finished) return;
+          var doc = document.documentElement;
+          var depth = (window.scrollY + window.innerHeight) / Math.max(1, doc.scrollHeight);
+          if (depth >= 0.9) { finished = true; send("read_end"); }
+        }, { passive: true });
       })();
     </script>
   )}
