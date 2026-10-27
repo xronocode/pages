@@ -16,7 +16,7 @@ interface Props {
 
 import '../styles/global.css';
 import CommandPalette from '../components/CommandPalette.astro';
-import { SITE, GA_ID } from '../site';
+import { SITE, COLLECT_KEY } from '../site';
 
 const {
   title,
@@ -117,9 +117,35 @@ const navItems = [
   <link rel="alternate" type="application/rss+xml" title={`${SITE.name} — essays`} href="/rss.xml" />
   <script type="application/ld+json" set:html={JSON.stringify(jsonld)} />
 
-  {GA_ID && (
-    // Consent Mode v2: the cookie banner appears only for EEA/UK/CH visitors (public/consent.js).
-    <script is:inline defer src="/consent.js" data-ga={GA_ID} data-geo="https://avenex.xronocode.com/api/geo" data-privacy="/privacy/"></script>
+  {COLLECT_KEY && (
+    // First-party page views: our own collector, no cookies and no third-party SDK.
+    <script is:inline define:vars={{ collectKey: COLLECT_KEY }}>
+      (function () {
+        try {
+          var sid = sessionStorage.getItem("wc_sid");
+          if (!sid) {
+            sid = Math.random().toString(36).slice(2) + Date.now().toString(36);
+            sessionStorage.setItem("wc_sid", sid);
+          }
+          var id = "p" + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+          fetch("https://dash.xronocode.com/api/v1/collect", {
+            method: "POST",
+            keepalive: true,
+            headers: { "content-type": "application/json", "x-collect-key": collectKey },
+            body: JSON.stringify({
+              events: [{
+                id: id,
+                name: "pageview",
+                session: sid,
+                ts: Date.now(),
+                path: location.pathname,
+                referrer: document.referrer ? new URL(document.referrer).host : null
+              }]
+            })
+          });
+        } catch (e) {}
+      })();
+    </script>
   )}
 
   <link href="/fonts/fonts.css" rel="stylesheet">

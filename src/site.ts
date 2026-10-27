@@ -14,8 +14,10 @@ export const SITE = {
   ],
 };
 
-// GA4 measurement ID for pages.xronocode.com (property "pages blog"). Set PUBLIC_GA_ID='' to disable.
-export const GA_ID = import.meta.env.PUBLIC_GA_ID ?? 'G-7PMFQ1X7DR';
+// First-party page views go to our own collector, not to Google. The key is public
+// by design: the collector accepts it only from pages.xronocode.com (Origin check).
+// Set PUBLIC_COLLECT_KEY='' to disable counting.
+export const COLLECT_KEY = import.meta.env.PUBLIC_COLLECT_KEY ?? '37ef53d917e02bc7cd6876155e22e953e19b24b0c3925314';
 
 // Rough reading time for a markdown body (words / 220 wpm, min 1).
 export function readingMinutes(body: string | undefined): number {
